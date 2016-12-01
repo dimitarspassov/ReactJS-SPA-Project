@@ -1,6 +1,6 @@
-# JavaScript-Forum-Project
+# ReactJS-SPA-Project
 
-<p>This is a sample forum project - a single page application with the following functionality included:</p>
+<p>This is a sample single page application with the following functionality included:</p>
 
 <ul>
 <li>User authentication</li>
