@@ -20,6 +20,6 @@
 
 <h1>Install and run</h1>
 
-<div class="highlight highlight-source-shell"><pre>git clone https://github.com/inaabadjieva/JavaScript-Forum-Project.git
+<div class="highlight highlight-source-shell"><pre>git clone https://github.com/inaabadjieva/ReactJS-SPA-Project.git
 
 

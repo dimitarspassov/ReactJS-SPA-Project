@@ -1,9 +1,16 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
-import './index.css';
+import { render } from 'react-dom';
+import {IndexRoute, Router, Route, browserHistory} from 'react-router';
 
-ReactDOM.render(
-  <App />,
+import App from './App';
+import NotFound from './components/NotFound'
+
+render(
+      <Router history={browserHistory}>
+        <Route path="/" component={App}>
+           
+             <Route path="*" component={NotFound}/>
+        </Route>
+    </Router>,
   document.getElementById('root')
 );
