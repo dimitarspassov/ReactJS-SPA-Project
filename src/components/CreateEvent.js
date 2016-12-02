@@ -29,7 +29,7 @@ class CreateEvent extends React.Component {
         event.preventDefault();
 
         //ToDO FileUpload
-        let image = "url"//$("#imageUrl").val() //|| $("#imageFile");
+        let image = $("#imageUrl").val() //|| $("#imageFile");
         //  this.setState();
         create($("#title").val(), $("#description").val(), $("#date").val(), $("#location").val(), image, this.onSubmitResponse);
     }
