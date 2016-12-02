@@ -11,9 +11,11 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
+          <div className="brand">Page Name??</div>
+          <div className="address-bar">something</div>
         <Nav />
         {this.props.children}
-          <Footer />
+        <Footer />
       </div>
     );
   }
