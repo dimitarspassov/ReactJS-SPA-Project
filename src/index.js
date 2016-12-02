@@ -15,7 +15,7 @@ render(
     <Router history={browserHistory}>
         <Route path="/" component={App} >
             <IndexRoute component={HomePage} />
-            <Route path="/about" component={About} />
+
         </Route>
     </Router>,
     document.getElementById('root')
