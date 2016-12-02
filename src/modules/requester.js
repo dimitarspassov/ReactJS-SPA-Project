@@ -9,7 +9,7 @@ function makeAuth(type) {
       //  case 'guest':
       //      return { 'Authorization': "Basic " + btoa("guest" + ":" + "guest") };
         case 'basic':
-            return { 'Authorization': "Basic " + btoa("guest" + ":" + "guest") };
+            return { 'Authorization': "Basic " + btoa("guest" + ":" + "guest") };  //??
         case 'kinvey':
             return { 'Authorization': "Kinvey " + sessionStorage.getItem('authToken') };
         default: break;
@@ -28,19 +28,20 @@ function get(module, uri, auth) {
 }
 
 function post(module, uri, data, auth) {
-    // const kinveyLoginUrl = kinveyBaseUrl + module + "/" + kinveyAppKey + "/" + uri;
-    // const kinveyAuthHeaders = makeAuth(auth);
-    //
-    // let request = {
-    //     method: "POST",
-    //     url: kinveyLoginUrl,
-    //     headers: kinveyAuthHeaders
-    // };
-    //
-    // if (data !== null) {
-    //     request.data = data;
-    // }
-    // return $.ajax(request);
+    const kinveyLoginUrl = kinveyBaseUrl + module + "/" + kinveyAppKey + "/" + uri;
+    const kinveyAuthHeaders = makeAuth(auth);
+
+    let request = {
+        method: "POST",
+        url: kinveyLoginUrl,
+        headers: kinveyAuthHeaders
+    };
+    
+    if (data !== null) {
+        request.data = data;
+        $.ajax(request);
+    }
+     return;
 }
 
 function update(module, uri, data, auth) {
