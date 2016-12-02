@@ -6754,4 +6754,8 @@ button.close {
     display: none !important;
   }
 }
+
+.portfolio-item {
+  margin-bottom: 25px;
+}
 /*# sourceMappingURL=bootstrap.css.map */

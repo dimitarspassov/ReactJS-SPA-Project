@@ -4,6 +4,8 @@ import { IndexRoute, Router, Route, browserHistory, Match} from 'react-router';
 
 import App from './App';
 import HomePage from './components/HomePage';
+import Events from './components/Events';
+
 
 const About = () => (
   <div>
@@ -15,6 +17,7 @@ render(
     <Router history={browserHistory}>
         <Route path="/" component={App} >
             <IndexRoute component={HomePage} />
+            <Route path="/events" component={Events} />
 
         </Route>
     </Router>,
