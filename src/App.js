@@ -13,9 +13,9 @@ class App extends React.Component {
       <div className="App">
           <div className="brand">Page Name??</div>
           <div className="address-bar">something</div>
-        <Nav />
-        {this.props.children}
-        <Footer />
+          <Nav />
+          {this.props.children}
+          <Footer />
       </div>
     );
   }

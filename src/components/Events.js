@@ -9,10 +9,6 @@ class Events extends React.Component {
         this.state = {
             events: []
         };
-        this.bindEventHandlers();
-    }
-
-    bindEventHandlers() {
         this.onLoadSuccess = this.onLoadSuccess.bind(this);
     }
 
@@ -30,6 +26,11 @@ class Events extends React.Component {
 
         return (<div className="container">
                 <div className="box">
+                   <hr/>
+                      <h2 className="intro-text text-center">
+                          <strong>Events</strong>
+                      </h2>
+                      <hr/>
                 <div className="row">
                     {this.state.events.map((e, i) => {
                         return(<div key={e._id} className="col-md-4 portfolio-item">
