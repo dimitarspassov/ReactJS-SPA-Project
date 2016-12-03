@@ -1,4 +1,4 @@
-import * as requester from './requester';
+import KinveyRequester from './requester';
 //import observer from './observer';
 
 function saveSession(userInfo) {
@@ -17,7 +17,7 @@ function login(username, password, callback) {
         password
     };
 
-    requester.post('user', 'login', userData, 'basic')
+    KinveyRequester.post('user', 'login', userData, 'basic')
         .then(loginSuccess);
 
     function loginSuccess(userInfo) {
@@ -34,7 +34,7 @@ function register(username, password, email, callback) {
         email
     };
 
-    requester.post('user', '', userData, 'basic')
+    KinveyRequester.post('user', '', userData, 'basic')
         .then(registerSuccess);
 
     function registerSuccess(userInfo) {
@@ -47,7 +47,7 @@ function register(username, password, email, callback) {
 
 // user/logout
 function logout(callback) {
-    requester.post('user', '_logout', null, 'kinvey')
+    KinveyRequester.post('user', '_logout', null, 'kinvey')
         .then(logoutSuccess);
 
 

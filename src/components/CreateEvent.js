@@ -29,15 +29,14 @@ class CreateEvent extends React.Component {
         event.preventDefault();
 
         //ToDO FileUpload
-        let image = $("#imageUrl").val() //|| $("#imageFile");
+        let image = $("#imageUrl").val()
         //  this.setState();
         create($("#title").val(), $("#description").val(), $("#date").val(), $("#location").val(), image, this.onSubmitResponse);
     }
 
     onSubmitResponse(response) {
         if (response === true) {
-            // ToDo: Navigate away from login page
-           // this.context.router.push('/');
+           // this.context.router.push('/events');
         } else {
             // ToDo: Something went wrong, let the user try again
         }
@@ -46,56 +45,53 @@ class CreateEvent extends React.Component {
     render() {
         return (<div>
                 <div className="container">
-                    <div className="brand">Create Event</div>
-                        <div className="box">
-                            <form className="form-horizontal">
-                                <fieldset>
-
-                                    <div className="form-group">
-                                        <label className="col-md-4 control-label" htmlFor="textinput">Title</label>
-                                        <div className="col-md-4">
-                                            <input id="title" name="textinput" type="text" placeholder="Enter event title" className="form-control input-md"/>
+                    <div className="box">
+                        <hr/>
+                        <h2 className="intro-text text-center">
+                            <strong>Create Event</strong>
+                        </h2>
+                        <hr/>
+                            <form className="form">
+                                    <div className="row">
+                                        <div className="form-group col-xs-offset-4 col-xs-4">
+                                        <label>Title</label>
+                                            <input id="title" className="form-control" required type="text"/>
                                         </div>
                                     </div>
 
-                                    <div className="form-group">
-                                        <label className="col-md-4 control-label" htmlFor="textarea">Description</label>
-                                        <div className="col-md-4">
-                                            <textarea className="form-control" id="description" name="textarea" placeholder="Enter event description"></textarea>
+                                    <div className="row">
+                                    <div className="form-group col-xs-offset-4 col-xs-4">
+                                        <label>Description</label>
+                                            <textarea className="form-control" id="description" ></textarea>
                                         </div>
                                     </div>
 
-                                    <div className="form-group">
-                                        <label className="col-md-4 control-label" htmlFor="textinput">Date</label>
-                                        <div className="col-md-4">
-                                            <input id="date" name="textinput" type="date" required className="form-control input-md" />
+                                    <div className="row">
+                                        <div className="form-group col-xs-offset-4 col-xs-4">
+                                            <label>Date</label>
+                                            <input id="date" type="date" required className="form-control" />
                                         </div>
                                     </div>
 
-                                    <div className="form-group">
-                                        <label className="col-md-4 control-label" htmlFor="textinput">Location</label>
-                                        <div className="col-md-4">
-                                            <input id="location" name="textinput" type="text" placeholder="Enter event location" className="form-control input-md"/>
+                                    <div className="row">
+                                        <div className="form-group col-xs-offset-4 col-xs-4">
+                                            <label>Location</label>
+                                            <input id="location" type="text" required className="form-control"/>
                                         </div>
                                     </div>
 
-                                    <div className="form-group">
-                                        <label className="col-md-4 control-label" htmlFor="textinput">Image Url</label>
-                                        <div className="col-md-4">
-                                            <input id="imageUrl" name="textinput" type="text" placeholder="Enter Image Url" className="form-control input-md" />
+                                    <div className="row">
+                                        <div className="form-group col-xs-offset-4 col-xs-4">
+                                            <label>Image Url</label>
+                                            <input id="imageUrl" type="text" required className="form-control" />
                                         </div>
                                     </div>
 
-                                    <div className="form-group">
-                                        <label className="col-md-4 control-label" htmlFor="filebutton">Upload Image</label>
-                                        <div className="col-md-4">
-                                            <input id="imageFile" name="filebutton" className="input-file" type="file"/>
-                                        </div>
-                                    </div>
-                                   <div className="buttonHolder"> <input className="btn btn-default btn-lg" type="submit" onClick={this.onSubmitHandler} value="Create"/></div>
-                                </fieldset>
+                                <div className="form-group col-lg-12">
+                                    <button type="submit" onClick={this.onSubmitHandler} className="btn btn-default">Submit</button>
+                                </div>
                             </form>
-                        </div>
+                    </div>
                 </div>
             </div>
         );

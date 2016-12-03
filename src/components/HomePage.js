@@ -22,17 +22,19 @@ class HomePage extends React.Component {
 		loadEvents(this.onLoadSuccess);
 	}
 	render() {
+		let len = this.state.events.length
         return (
             <div className="container">
-                <div className="row">
-                    {this.state.events.splice(0,3).map((event, i) => {
+                    {this.state.events.reverse().splice(0,3).map((event, i) => {
 						return( <div key={event._id} className="box">
 						<div className="col-lg-12 text-center">
 							<div id="carousel-example-generic">
 								<div className="carousel-inner">
 									<div className="item active">
+										<a href="#">
 										<img className="img-responsive img-full"
 											 src={event.image} alt=""/>
+											</a>
 									</div>
 								</div>
 							</div>
@@ -49,7 +51,7 @@ class HomePage extends React.Component {
 						</h2>
 					</div>)})}
                 </div>
-            </div>
+            
         );
     }
 }
