@@ -1,28 +1,45 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import Nav from './components/common/Nav';
 import Footer from './components/common/Footer';
-import Homepage from './components/HomePage';
-import KinveyRequester from './modules/requester';
+//import KinveyRequester from './modules/requester';
 
 class App extends React.Component {
 	constructor() {
-        super();
-        this.state = { loggedIn: false, username: '' };
+            super();
+            this.state = { 
+              username: '', 
+              userId: '' 
+            };
+        }
+      componentDidMount() {
+        this.state = {
+            username: sessionStorage.getItem("username"),
+            userId: sessionStorage.getItem("userId")
+        };
+       
+        // $(document).on({
+        //     ajaxStart: function() { $("#loadingBox").show() },
+        //     ajaxStop: function() { $("#loadingBox").hide() }
+        // });
+       
+        // $(document).ajaxError(this.handleAjaxError.bind(this));
+     
+        // $("#infoBox, #errorBox").click(function() {
+        //     $(this).fadeOut();
+        // });
     }
-    
-  render() {
-    return (
-      <div className="App">
-          <div className="container">
-              <div className="brand">Event Storm</div>
-          </div>
-          <Nav/>
-          {this.props.children}       
-          <Footer />
-      </div>
-    );
-  }
+        render() {
+          return (
+            <div className="App">
+                <div className="container">
+                    <div className="brand">Event Storm</div>
+                </div>
+                <Nav/>
+                {this.props.children}       
+                <Footer />
+            </div>
+          );
+        }
 }
 
 

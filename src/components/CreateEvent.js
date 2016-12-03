@@ -1,6 +1,5 @@
 import React from 'react';
 import {create} from '../modules/events';
-import {Link} from 'react-router';
 import $ from 'jquery';
 
 

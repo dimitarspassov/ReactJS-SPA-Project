@@ -1,6 +1,5 @@
 import React from 'react';
 import {loadEvents} from '../modules/events';
-import {Link} from 'react-router';
 
 Object.defineProperty(Array.prototype, 'chunk_inefficient', {
     value: function (chunkSize) {

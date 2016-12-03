@@ -7,6 +7,7 @@ import HomePage from './components/HomePage';
 import Events from './components/Events';
 import CreateEvent from './components/CreateEvent';
 import Login from './components/Login'
+import Logout from './components/Logout'
 import Register from './components/Register'
 import SingleEventPage from './components/SingleEventPage'
 
@@ -19,6 +20,7 @@ render(
             <Route path="/register" component={ Register } />
             <Route path="/createEvent" component={CreateEvent} />
             <Route path="/details/:id" component={SingleEventPage} />
+            <Route path="logout" component={Logout}/>
         </Route>
     </Router>,
     document.getElementById('root')
