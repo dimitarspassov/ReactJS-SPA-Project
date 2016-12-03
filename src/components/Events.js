@@ -33,10 +33,7 @@ class Events extends React.Component {
         loadEvents(this.onLoadSuccess);
     }
 
-
     render() {
-
-
         return (<div className="container">
                 <div className="box">
                     <hr/>
