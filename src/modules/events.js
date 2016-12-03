@@ -1,7 +1,7 @@
 import KinveyRequester from './requester';
 
 function loadEvents(callback) {
-    KinveyRequester.get('appdata', 'events', 'kinvey')
+    KinveyRequester.get('appdata', 'events', 'guest')
         .then(callback);
 }
 

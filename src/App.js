@@ -11,11 +11,25 @@ class App extends React.Component {
               userId: '' 
             };
         }
-      componentDidMount() {
-        this.state = {
-            username: sessionStorage.getItem("username"),
-            userId: sessionStorage.getItem("userId")
-        };
+        isLoggedIn(){
+          let user= {
+              isLogged: false,
+              username: sessionStorage.getItem("userId"),
+              userId: sessionStorage.getItem("userId")
+          };
+
+          if(sessionStorage.getItem("userId") !== '') {
+              return user;
+          } else {
+            return false;
+          }
+        }
+
+      // componentDidMount() {
+      //   this.state = {
+      //       username: sessionStorage.getItem("username"),
+      //       userId: sessionStorage.getItem("userId")
+      // };
        
         // $(document).on({
         //     ajaxStart: function() { $("#loadingBox").show() },
@@ -27,7 +41,7 @@ class App extends React.Component {
         // $("#infoBox, #errorBox").click(function() {
         //     $(this).fadeOut();
         // });
-    }
+   // }
         render() {
           return (
             <div className="App">
@@ -42,17 +56,4 @@ class App extends React.Component {
         }
 }
 
-
-//function showView(reactViewComponent) {
-  //  ReactDOM.render(reactViewComponent,
-    //    document.getElementById('main'));
-//}
-
-//(function showHomeView() {
-
-   // function loadLastThreeEvents(events) {
-
-      //  showView(<Homepage events={events} />)
-   // }
-//})();
 export default App;
