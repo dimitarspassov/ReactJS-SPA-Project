@@ -1,54 +1,33 @@
 import React from 'react';
 import Nav from './components/common/Nav';
 import Footer from './components/common/Footer';
-//import KinveyRequester from './modules/requester';
+import observer from './modules/observer';
 
 class App extends React.Component {
 	constructor() {
             super();
-            this.state = { 
-              username: '', 
-              userId: '' 
-            };
+            this.state = { loggedIn: false, username: '' };
+            observer.onSessionUpdate = this.onSessionUpdate.bind(this);
         }
-        isLoggedIn(){
-          let user= {
-              isLogged: false,
-              username: sessionStorage.getItem("userId"),
-              userId: sessionStorage.getItem("userId")
-          };
+        componentDidMount() {
+        this.onSessionUpdate();
+    }
 
-          if(sessionStorage.getItem("userId") !== '') {
-              return user;
-          } else {
-            return false;
-          }
+    onSessionUpdate() {
+        let name = sessionStorage.getItem("username");
+        if (name) {
+            this.setState({ loggedIn: true, username: sessionStorage.getItem("username") });
+        } else {
+            this.setState({ loggedIn: false, username: '' });
         }
-
-      // componentDidMount() {
-      //   this.state = {
-      //       username: sessionStorage.getItem("username"),
-      //       userId: sessionStorage.getItem("userId")
-      // };
-       
-        // $(document).on({
-        //     ajaxStart: function() { $("#loadingBox").show() },
-        //     ajaxStop: function() { $("#loadingBox").hide() }
-        // });
-       
-        // $(document).ajaxError(this.handleAjaxError.bind(this));
-     
-        // $("#infoBox, #errorBox").click(function() {
-        //     $(this).fadeOut();
-        // });
-   // }
+    }
         render() {
           return (
             <div className="App">
                 <div className="container">
                     <div className="brand">Event Storm</div>
                 </div>
-                <Nav/>
+                <Nav loggedIn={this.state.loggedIn} user={this.state.username}/>
                 {this.props.children}       
                 <Footer />
             </div>
