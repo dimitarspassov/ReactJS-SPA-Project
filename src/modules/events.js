@@ -1,8 +1,8 @@
-import {get, post, update} from './requester';
+import KinveyRequester from './requester';
 
 function loadEvents(callback) {
     // Request events from db
-    get('appdata', 'events', 'basic')
+    KinveyRequester.get('appdata', 'events', 'guest')
         .then(callback);
 }
 
@@ -17,7 +17,7 @@ function create( title, description, date, location, image, callback) {
         image:image
     };
 
-    post('appdata', 'events', eventData, 'basic')
+    KinveyRequester.post('appdata', 'events', eventData, 'basic')
         .then(callback);
 }
 

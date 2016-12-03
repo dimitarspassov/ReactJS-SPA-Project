@@ -1,62 +1,68 @@
 import $ from 'jquery';
 
-const kinveyBaseUrl = "https://baas.kinvey.com/";
-const kinveyAppKey = "kid_Hk2vMlJme";
-const kinveyAppSecret = "fb14ec4b700d4dcdbdb2a58295051bba";
+const KinveyRequester = (function () {
 
-function makeAuth(type) {
-    switch (type) {
-      //  case 'guest':
-      //      return { 'Authorization': "Basic " + btoa("guest" + ":" + "guest") };
-        case 'basic':
-            return { 'Authorization': "Basic " + btoa(kinveyAppKey + ":" + kinveyAppSecret) };  //??
-        case 'kinvey':
-            return { 'Authorization': "Kinvey " + sessionStorage.getItem('authToken') };
-        default: break;
-    }
-}
+        const kinveyBaseUrl = "https://baas.kinvey.com/";
+        const kinveyAppKey = "kid_Hk2vMlJme";
+        const kinveyAppSecret = "fb14ec4b700d4dcdbdb2a58295051bba";
 
-function get(module, uri, auth) {
-    const kinveyLoginUrl = kinveyBaseUrl + module + "/" + kinveyAppKey + "/" + uri;
-    const kinveyAuthHeaders = makeAuth(auth);
+        function makeAuth(type) {
+            switch (type) {
+                case 'guest':
+                      return { 'Authorization': "Basic " + btoa("guest" + ":" + "guest") };
+                case 'basic':
+                    return {'Authorization': "Basic " + btoa(kinveyAppKey + ":" + kinveyAppSecret)};  //??
+                case 'kinvey':
+                    return {'Authorization': "Kinvey " + sessionStorage.getItem('authToken')};
+                default:
+                    break;
+            }
+        }
 
-    return $.ajax({
-        method: "GET",
-        url: kinveyLoginUrl,
-        headers: kinveyAuthHeaders
-    });
-}
+            function get(module, uri, auth) {
+            const kinveyLoginUrl = kinveyBaseUrl + module + "/" + kinveyAppKey + "/" + uri;
+            const kinveyAuthHeaders = makeAuth(auth);
 
-function post(module, uri, data, auth) {
-    console.log(kinveyBaseUrl)
-    const kinveyLoginUrl = kinveyBaseUrl + module + "/" + kinveyAppKey + "/" + uri;
-    const kinveyAuthHeaders = makeAuth(auth);
+            return $.ajax({
+                method: "GET",
+                url: kinveyLoginUrl,
+                headers: kinveyAuthHeaders
+            });
+        }
 
-    let request = {
-        method: "POST",
-        url: kinveyLoginUrl,
-        headers: kinveyAuthHeaders
-    };
-    
-    if (data !== null) {
-        request.data = data;
-        $.ajax(request);
-    }
-     return;
-}
+        function post(module, uri, data, auth) {
 
-function update(module, uri, data, auth) {
-    // const kinveyLoginUrl = kinveyBaseUrl + module + "/" + kinveyAppKey + "/" + uri;
-    // const kinveyAuthHeaders = makeAuth(auth);
-    //
-    // let request = {
-    //     method: "PUT",
-    //     url: kinveyLoginUrl,
-    //     headers: kinveyAuthHeaders,
-    //     data: data
-    // };
-    //
-    // return $.ajax(request);
-}
+            const kinveyLoginUrl = kinveyBaseUrl + module + "/" + kinveyAppKey + "/" + uri;
+            const kinveyAuthHeaders = makeAuth(auth);
 
-export {get, post, update};
+            let request = {
+                method: "POST",
+                url: kinveyLoginUrl,
+                headers: kinveyAuthHeaders
+            };
+
+            if (data !== null) {
+                request.data = data;
+                $.ajax(request);
+            }
+            return;
+        }
+
+        function update(module, uri, data, auth) {
+            // const kinveyLoginUrl = kinveyBaseUrl + module + "/" + kinveyAppKey + "/" + uri;
+            // const kinveyAuthHeaders = makeAuth(auth);
+            //
+            // let request = {
+            //     method: "PUT",
+            //     url: kinveyLoginUrl,
+            //     headers: kinveyAuthHeaders,
+            //     data: data
+            // };
+            //
+            // return $.ajax(request);
+        }
+
+        return {get, post}
+    })();
+
+export default KinveyRequester;

@@ -1,6 +1,9 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import Nav from './components/common/Nav';
 import Footer from './components/common/Footer';
+import Homepage from './components/HomePage';
+import KinveyRequester from './modules/requester';
 
 class App extends React.Component {
 	constructor() {
@@ -11,14 +14,28 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-          <div className="brand">Page Name??</div>
-          <div className="address-bar">something</div>
-          <Nav />
-          {this.props.children}
+          <div className="container">
+              <div className="brand">Event Storm</div>
+          </div>
+          <Nav/>
+          {this.props.children}       
           <Footer />
       </div>
     );
   }
 }
 
+
+//function showView(reactViewComponent) {
+  //  ReactDOM.render(reactViewComponent,
+    //    document.getElementById('main'));
+//}
+
+//(function showHomeView() {
+
+   // function loadLastThreeEvents(events) {
+
+      //  showView(<Homepage events={events} />)
+   // }
+//})();
 export default App;
