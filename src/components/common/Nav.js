@@ -6,7 +6,26 @@ class Nav extends React.Component {
         super()
     }
   render() {
-    let nav = '' 
+     let navbar = {};
+        if (this.props.loggedIn) {
+            navbar = (
+                <ul className="nav navbar-nav">
+                     <li><Link to="/">Home</Link></li>
+                    <li><Link to="/events">Events</Link></li>
+                    <li><Link to="/createEvent">Create Event</Link></li>
+                    <li><Link to="/logout">Logout</Link></li>
+                </ul>
+                );
+        } else {
+            navbar = (
+                <ul className="nav navbar-nav">
+                    <li><Link to="/">Home</Link></li>
+                    <li><Link to="/events">Events</Link></li>
+                    <li><Link to="/login">Login</Link></li>
+                    <li><Link to="/register">Register</Link></li>
+                </ul>    
+            );
+        }
     return (
      <nav className="navbar navbar-default" role="navigation">
             <div className="container">
@@ -21,15 +40,7 @@ class Nav extends React.Component {
                
                 <a className="navbar-brand" href="index.html">MENU</a>
             </div>
-           
-                <ul className="nav navbar-nav">
-                    <li><Link to="/">Home</Link></li>
-                    <li><Link to="/events">Events</Link></li>
-                    <li><Link to="/createEvent">Create Event</Link></li>
-                    <li><Link to="/login">Login</Link></li>
-                    <li><Link to="/register">Register</Link></li>
-                    <li><Link to="/logout">Logout</Link></li>
-                </ul>
+           { navbar }
             </div>
     </nav>
     );

@@ -1,5 +1,5 @@
 import KinveyRequester from './requester';
-//import observer from './observer';
+import observer from './observer';
 
 function login(username, password, callback) {
     let userData = {
@@ -28,7 +28,7 @@ function register(username, password, email, callback) {
 
     function registerSuccess(userInfo) {
         console.log('success')
-        //observer.showSuccess('Successful registration.');
+        observer.showSuccess('Successful registration.');
         saveSession(userInfo);
         callback(true);
     }
@@ -41,7 +41,7 @@ function logout(callback) {
 
     function logoutSuccess(response) {
         sessionStorage.clear();
-        //observer.onSessionUpdate();
+        observer.onSessionUpdate();
         callback(true);
     }
 }
