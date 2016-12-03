@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router';
 import {loadEvents} from '../modules/events';
 
 Object.defineProperty(Array.prototype, 'chunk_inefficient', {
