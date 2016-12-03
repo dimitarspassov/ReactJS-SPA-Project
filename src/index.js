@@ -8,6 +8,7 @@ import Events from './components/Events';
 import CreateEvent from './components/CreateEvent';
 import Login from './components/Login'
 import Register from './components/Register'
+import SingleEventPage from './components/SingleEventPage'
 
 render(
     <Router history={ browserHistory }>
@@ -17,6 +18,7 @@ render(
             <Route path="/login" component={ Login } />
             <Route path="/register" component={ Register } />
             <Route path="/createEvent" component={CreateEvent} />
+            <Route path="/details/:id" component={SingleEventPage} />
         </Route>
     </Router>,
     document.getElementById('root')

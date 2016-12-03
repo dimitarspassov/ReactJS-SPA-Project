@@ -58,7 +58,7 @@ class Events extends React.Component {
                                         </h3>
                                     </h2>
                                     <p>{event.description}</p>
-                                    <a href="#" className="btn btn-default btn-lg">Read More</a>
+                                    <Link className="btn btn-default btn-lg" to={"/details/" + event._id}>ReadMore</Link>
                                 </div>)}
                         </div>
                     )};
