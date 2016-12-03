@@ -1,6 +1,5 @@
 import React from 'react';
 import {loadEvents} from '../modules/events';
-import {Link} from 'react-router';
 
 class HomePage extends React.Component {
 

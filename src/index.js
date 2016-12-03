@@ -7,16 +7,18 @@ import HomePage from './components/HomePage';
 import Events from './components/Events';
 import CreateEvent from './components/CreateEvent';
 import Login from './components/Login'
+import Logout from './components/Logout'
 import Register from './components/Register'
 
 render(
     <Router history={ browserHistory }>
         <Route path="/" component={ App } >
             <IndexRoute component={ HomePage } />
-            <Route path="/events" component={ Events } />
-            <Route path="/login" component={ Login } />
-            <Route path="/register" component={ Register } />
-            <Route path="/createEvent" component={CreateEvent} />
+            <Route path="events" component={ Events } />
+            <Route path="login" component={ Login } />
+            <Route path="register" component={ Register } />
+            <Route path="logout" component={Logout}/>
+            <Route path="createEvent" component={CreateEvent} />
         </Route>
     </Router>,
     document.getElementById('root')

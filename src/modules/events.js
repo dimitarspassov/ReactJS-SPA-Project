@@ -1,13 +1,12 @@
 import KinveyRequester from './requester';
 
 function loadEvents(callback) {
-    // Request events from db
-    KinveyRequester.get('appdata', 'events', 'guest')
+    KinveyRequester.get('appdata', 'events', 'kinvey')
         .then(callback);
 }
 
 function create( title, description, date, location, image, callback) {
-    let author = "Eli" //sessionStorage.getItem('username')
+    let author = sessionStorage.getItem('username')
     let eventData = {
         author: author,
         title:title,
@@ -17,7 +16,7 @@ function create( title, description, date, location, image, callback) {
         image:image
     };
 
-    KinveyRequester.post('appdata', 'events', eventData, 'basic')
+    KinveyRequester.post('appdata', 'events', eventData, 'kinvey')
         .then(callback);
 }
 

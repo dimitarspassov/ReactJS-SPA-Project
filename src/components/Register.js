@@ -4,7 +4,6 @@ import { register } from '../modules/user'
 class Register extends Component {
       constructor() {
         super();
-        //this.state = { username: '', password: '', confirm: '', submitDisabled: false };
         this.onSubmitHandler = this.onSubmitHandler.bind(this);
         this.onSubmitResponse = this.onSubmitResponse.bind(this);
     }
@@ -21,10 +20,8 @@ class Register extends Component {
 
     onSubmitResponse(response) {
         if (response === true) {
-            // Navigate away from register page
             this.context.router.push('/');
         } else {
-            // Something went wrong, let the user try again
             this.setState({ submitDisabled: true });
         }
     }

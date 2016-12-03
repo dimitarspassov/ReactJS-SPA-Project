@@ -8,10 +8,8 @@ const KinveyRequester = (function () {
 
         function makeAuth(type) {
             switch (type) {
-                case 'guest':
-                      return { 'Authorization': "Basic " + btoa("guest" + ":" + "guest") };
                 case 'basic':
-                    return {'Authorization': "Basic " + btoa(kinveyAppKey + ":" + kinveyAppSecret)};  //??
+                    return {'Authorization': "Basic " + btoa(kinveyAppKey + ":" + kinveyAppSecret)}; 
                 case 'kinvey':
                     return {'Authorization': "Kinvey " + sessionStorage.getItem('authToken')};
                 default:
@@ -35,32 +33,27 @@ const KinveyRequester = (function () {
             const kinveyLoginUrl = kinveyBaseUrl + module + "/" + kinveyAppKey + "/" + uri;
             const kinveyAuthHeaders = makeAuth(auth);
 
-            let request = {
+            return $.ajax({
                 method: "POST",
                 url: kinveyLoginUrl,
-                headers: kinveyAuthHeaders
-            };
-
-            if (data !== null) {
-                request.data = data;
-                $.ajax(request);
-            }
-            return;
+                headers: kinveyAuthHeaders, 
+                data: data
+            });
         }
 
-        function update(module, uri, data, auth) {
-            // const kinveyLoginUrl = kinveyBaseUrl + module + "/" + kinveyAppKey + "/" + uri;
-            // const kinveyAuthHeaders = makeAuth(auth);
-            //
-            // let request = {
-            //     method: "PUT",
-            //     url: kinveyLoginUrl,
-            //     headers: kinveyAuthHeaders,
-            //     data: data
-            // };
-            //
-            // return $.ajax(request);
-        }
+        // function update(module, uri, data, auth) {
+        //     const kinveyLoginUrl = kinveyBaseUrl + module + "/" + kinveyAppKey + "/" + uri;
+        //     const kinveyAuthHeaders = makeAuth(auth);
+            
+        //     let request = {
+        //         method: "PUT",
+        //         url: kinveyLoginUrl,
+        //         headers: kinveyAuthHeaders,
+        //         data: data
+        //     };
+            
+        //     return $.ajax(request);
+        // }
 
         return {get, post}
     })();
