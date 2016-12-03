@@ -5,39 +5,18 @@ class Register extends Component {
       constructor() {
         super();
         //this.state = { username: '', password: '', confirm: '', submitDisabled: false };
-        //this.onChangeHandler = this.onChangeHandler.bind(this);
         this.onSubmitHandler = this.onSubmitHandler.bind(this);
         this.onSubmitResponse = this.onSubmitResponse.bind(this);
     }
 
-    // onChangeHandler(event) {
-    //     switch (event.target.name) {
-    //         case 'username':
-    //             this.setState({ username: event.target.value });
-    //             break;
-    //         case 'password':
-    //             this.setState({ password: event.target.value });
-    //             break;
-    //         case 'confirmPassword':
-    //             this.setState({ confirmPassword: event.target.value });
-    //             break;
-    //         case 'email':
-    //             this.setState({ email: event.target.value });
-    //             break;    
-    //         default:
-    //             break;
-    //     }
-    // }
-
     onSubmitHandler(event) {
         event.preventDefault();
-        console.log(this.username.value)
-        if (this.state.password !== this.state.confirmPassword) {
-            alert("Passwords don't match");
-            return;
-        }
-        this.setState({ submitDisabled: true });
-        register(this.state.username, this.state.password, this.state.email, this.onSubmitResponse);
+        // if (this.state.password !== this.state.confirmPassword) {
+        //     alert("Passwords don't match");
+        //     return;
+        // }
+        //this.setState({ submitDisabled: true });
+        register(this.username.value, this.password.value, this.email.value, this.onSubmitResponse);
     }
 
     onSubmitResponse(response) {
