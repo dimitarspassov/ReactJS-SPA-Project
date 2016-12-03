@@ -26,4 +26,16 @@ function create( title, description, date, location, image, callback) {
         .then(callback);
 }
 
-export {loadEvents, create, loadSingleEvent};
+function attend() {
+    
+}
+
+function leave() {
+    
+}
+
+function isAttending() {
+
+}
+
+export {loadEvents, create, loadSingleEvent, attend, leave, isAttending};

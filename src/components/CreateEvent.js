@@ -13,12 +13,6 @@ class CreateEvent extends React.Component {
 
     onSubmitHandler(event) {
         event.preventDefault();
-        console.log(this.title.value)
-        console.log(this.description.value)
-        console.log(this.date.value)
-        console.log(this.location.value)
-        console.log(this.image.value)
-        //ToDO FileUpload
         create(this.title.value, this.description.value, this.date.value, this.location.value, this.image.value, this.onSubmitResponse);
     }
 
