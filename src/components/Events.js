@@ -1,100 +1,56 @@
 import React from 'react';
+import {loadEvents} from '../modules/events';
+import {Link} from 'react-router';
 
 class Events extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            events: []
+        };
+        this.onLoadSuccess = this.onLoadSuccess.bind(this);
+    }
+
+    onLoadSuccess(response) {
+        // Display events
+        this.setState({events: response})
+    }
+
+    componentDidMount() {
+        // Request list of events from the server
+        loadEvents(this.onLoadSuccess);
+    }
+
     render() {
+
         return (<div className="container">
                 <div className="box">
+                   <hr/>
+                      <h2 className="intro-text text-center">
+                          <strong>Events</strong>
+                      </h2>
+                      <hr/>
                 <div className="row">
-                    <div className="col-md-4 portfolio-item">
+                    {this.state.events.map((e, i) => {
+                        return(<div key={e._id} className="col-md-4 portfolio-item">
                         <a href="#">
-                            <img className="img-responsive" src="http://placehold.it/700x400" alt=""/>
+                            <img className="img-responsive" src={e.image} alt=""/>
                         </a>
                         <h3>
-                            <a href="#">Project Name</a>
+                            <h2>{e.title}
+                            <br/>
+                            <small>{e.date}</small>
+                            </h2>
                         </h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
+                        <p>{e.description}</p>
+                                <a href="#" className="btn btn-default btn-lg">Read More</a>
                     </div>
-                    <div className="col-md-4 portfolio-item">
-                        <a href="#">
-                            <img className="img-responsive" src="http://placehold.it/700x400" alt=""/>
-                        </a>
-                        <h3>
-                            <a href="#">Project Name</a>
-                        </h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
-                    </div>
-                    <div className="col-md-4 portfolio-item">
-                        <a href="#">
-                            <img className="img-responsive" src="http://placehold.it/700x400" alt=""/>
-                        </a>
-                        <h3>
-                            <a href="#">Project Name</a>
-                        </h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
-                    </div>
+                        )})}
                 </div>
 
-                <div className="row">
-                    <div className="col-md-4 portfolio-item">
-                        <a href="#">
-                            <img className="img-responsive" src="http://placehold.it/700x400" alt=""/>
-                        </a>
-                        <h3>
-                            <a href="#">Project Name</a>
-                        </h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
-                    </div>
-                    <div className="col-md-4 portfolio-item">
-                        <a href="#">
-                            <img className="img-responsive" src="http://placehold.it/700x400" alt=""/>
-                        </a>
-                        <h3>
-                            <a href="#">Project Name</a>
-                        </h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
-                    </div>
-                    <div className="col-md-4 portfolio-item">
-                        <a href="#">
-                            <img className="img-responsive" src="http://placehold.it/700x400" alt=""/>
-                        </a>
-                        <h3>
-                            <a href="#">Project Name</a>
-                        </h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
-                    </div>
-                </div>
 
-                <div className="row">
-                    <div className="col-md-4 portfolio-item">
-                        <a href="#">
-                            <img className="img-responsive" src="http://placehold.it/700x400" alt=""/>
-                        </a>
-                        <h3>
-                            <a href="#">Project Name</a>
-                        </h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
-                    </div>
-                    <div className="col-md-4 portfolio-item">
-                        <a href="#">
-                            <img className="img-responsive" src="http://placehold.it/700x400" alt=""/>
-                        </a>
-                        <h3>
-                            <a href="#">Project Name</a>
-                        </h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
-                    </div>
-                    <div className="col-md-4 portfolio-item">
-                        <a href="#">
-                            <img className="img-responsive" src="http://placehold.it/700x400" alt=""/>
-                        </a>
-                        <h3>
-                            <a href="#">Project Name</a>
-                        </h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
-                    </div>
-                </div>
-
-                <div className="row text-center">
+                    <div className="row text-center">
                     <div className="col-lg-12">
                         <ul className="pagination">
                             <li>

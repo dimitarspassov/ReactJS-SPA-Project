@@ -6758,4 +6758,8 @@ button.close {
 .portfolio-item {
   margin-bottom: 25px;
 }
+
+.buttonHolder{
+  text-align: center;
+ }
 /*# sourceMappingURL=bootstrap.css.map */
