@@ -27,7 +27,7 @@ class SingleEventPage extends React.Component {
         if(!sessionStorage.getItem("username")){
             btn.css("display", "none")
         }
-        if(isAttending(this.props.eventId)){
+        if(isAttending(this.state.eventId)){
             btn.removeClass("btn btn-outline-success btn-lg")
             btn.addClass("btn btn-success btn-lg")
             btn.text("I'm comming!")
@@ -58,6 +58,9 @@ class SingleEventPage extends React.Component {
     }
 
     render() {
+        if(this.state.eventData.author == sessionStorage.getItem("username")){
+            $("#attendBtn").css("display", "none")
+        }
         return (
             <div className="container">
                 <div className="row">
