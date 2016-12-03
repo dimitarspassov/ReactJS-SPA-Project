@@ -17,7 +17,7 @@ function create( title, description, date, location, image, callback) {
         image:image
     };
 
-    KinveyRequester.post('appdata', 'events', eventData, 'basic')
+    KinveyRequester.post('appdata', 'events', eventData, 'guest')
         .then(callback);
 }
 
