@@ -42,17 +42,4 @@ class App extends React.Component {
         }
 }
 
-
-//function showView(reactViewComponent) {
-  //  ReactDOM.render(reactViewComponent,
-    //    document.getElementById('main'));
-//}
-
-//(function showHomeView() {
-
-   // function loadLastThreeEvents(events) {
-
-      //  showView(<Homepage events={events} />)
-   // }
-//})();
 export default App;

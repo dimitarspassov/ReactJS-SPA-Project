@@ -2,17 +2,6 @@ import React from 'react';
 import {Link} from 'react-router';
 import {loadEvents} from '../modules/events';
 
-Object.defineProperty(Array.prototype, 'chunk_inefficient', {
-    value: function (chunkSize) {
-        let array = this;
-        return [].concat.apply([],
-            array.map(function (elem, i) {
-                return i % chunkSize ? [] : [array.slice(i, i + chunkSize)];
-            })
-        );
-    }
-});
-
 class Events extends React.Component {
 
     constructor(props) {
@@ -25,7 +14,8 @@ class Events extends React.Component {
 
     onLoadSuccess(response) {
         // Display events
-        this.setState({events: response})
+        let myEvents = response.filter(x => {return x.author == sessionStorage.getItem('username')})
+        this.setState({events: myEvents})
     }
 
     componentDidMount() {
@@ -38,7 +28,7 @@ class Events extends React.Component {
                 <div className="box">
                     <hr/>
                     <h2 className="intro-text text-center">
-                        <strong>Events</strong>
+                        <strong>Events hosted By Me</strong>
                     </h2>
                     <hr/>
                     {(this.state.events.chunk_inefficient(3)).map(row =>
@@ -59,34 +49,6 @@ class Events extends React.Component {
                                 </div>)}
                         </div>
                     )};
-
-                    <div className="row text-center">
-                        <div className="col-lg-12">
-                            <ul className="pagination">
-                                <li>
-                                    <a href="#">&laquo;</a>
-                                </li>
-                                <li className="active">
-                                    <a href="#">1</a>
-                                </li>
-                                <li>
-                                    <a href="#">2</a>
-                                </li>
-                                <li>
-                                    <a href="#">3</a>
-                                </li>
-                                <li>
-                                    <a href="#">4</a>
-                                </li>
-                                <li>
-                                    <a href="#">5</a>
-                                </li>
-                                <li>
-                                    <a href="#">&raquo;</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
                 </div>
             </div>
         )

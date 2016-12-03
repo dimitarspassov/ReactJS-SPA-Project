@@ -1,5 +1,7 @@
 import React from 'react';
 import {loadEvents} from '../modules/events';
+import {Link} from 'react-router';
+
 
 class HomePage extends React.Component {
 
@@ -30,10 +32,10 @@ class HomePage extends React.Component {
                             <div id="carousel-example-generic">
                                 <div className="carousel-inner">
                                     <div className="item active">
-                                        <a href="#">
+                                        <Link to={"/details/" + event._id}>
                                             <img className="img-responsive img-full"
                                                  src={event.image} alt=""/>
-                                        </a>
+                                        </Link>
                                     </div>
                                 </div>
                             </div>
