@@ -17,9 +17,8 @@ class App extends React.Component {
           <div className="container">
               <div className="brand">Event Storm</div>
           </div>
-          <Nav />
-          <main id="main"></main>
-          {/*{this.props.children}*/}
+          <Nav/>
+          {this.props.children}       
           <Footer />
       </div>
     );
@@ -27,17 +26,16 @@ class App extends React.Component {
 }
 
 
-function showView(reactViewComponent) {
-    ReactDOM.render(reactViewComponent,
-        document.getElementById('main'));
-}
+//function showView(reactViewComponent) {
+  //  ReactDOM.render(reactViewComponent,
+    //    document.getElementById('main'));
+//}
 
-(function showHomeView() {
-    KinveyRequester.getLastThreeEvents().then(loadLastThreeEvents.bind(this));
+//(function showHomeView() {
 
-    function loadLastThreeEvents(events) {
+   // function loadLastThreeEvents(events) {
 
-        showView(<Homepage events={events} />)
-    }
-})();
+      //  showView(<Homepage events={events} />)
+   // }
+//})();
 export default App;

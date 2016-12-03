@@ -21,7 +21,7 @@ class Nav extends React.Component {
                 <ul className="nav navbar-nav" class="nav navbar-nav">
                     <li><Link to="/">Home</Link></li>
                     <li><Link to="/events">Events</Link></li>
-                    <li><Link to="/create-event">Create Event</Link></li>
+                    <li><Link to="/createEvent">Create Event</Link></li>
                     <li><Link to="/login">Login</Link></li>
                     <li><Link to="/register">Register</Link></li>
                 </ul>

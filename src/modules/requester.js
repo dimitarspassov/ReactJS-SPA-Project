@@ -19,14 +19,7 @@ const KinveyRequester = (function () {
             }
         }
 
-        function getLastThreeEvents() {
-            return $.get({
-                url: kinveyBaseUrl + 'appdata/' + kinveyAppKey + '/events',
-                headers: makeAuth('basic'),
-            });
-        }
-
-        function get(module, uri, auth) {
+            function get(module, uri, auth) {
             const kinveyLoginUrl = kinveyBaseUrl + module + "/" + kinveyAppKey + "/" + uri;
             const kinveyAuthHeaders = makeAuth(auth);
 
@@ -69,7 +62,7 @@ const KinveyRequester = (function () {
             // return $.ajax(request);
         }
 
-        return {getLastThreeEvents, get, post}
+        return {get, post}
     })();
 
 export default KinveyRequester;
