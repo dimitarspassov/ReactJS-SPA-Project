@@ -2,14 +2,14 @@ import $ from 'jquery';
 
 const kinveyBaseUrl = "https://baas.kinvey.com/";
 const kinveyAppKey = "kid_Hk2vMlJme";
-//const kinveyAppSecret = "fb14ec4b700d4dcdbdb2a58295051bba";
+const kinveyAppSecret = "fb14ec4b700d4dcdbdb2a58295051bba";
 
 function makeAuth(type) {
     switch (type) {
       //  case 'guest':
       //      return { 'Authorization': "Basic " + btoa("guest" + ":" + "guest") };
         case 'basic':
-            return { 'Authorization': "Basic " + btoa("guest" + ":" + "guest") };  //??
+            return { 'Authorization': "Basic " + btoa(kinveyAppKey + ":" + kinveyAppSecret) };  //??
         case 'kinvey':
             return { 'Authorization': "Kinvey " + sessionStorage.getItem('authToken') };
         default: break;
