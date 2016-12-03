@@ -15,7 +15,7 @@ class Nav extends React.Component {
                     <span className="icon-bar" class="icon-bar"></span>
                 </button>
                
-                <a className="navbar-brand" class="navbar-brand" href="index.html">Eventi</a>
+                <a className="navbar-brand" class="navbar-brand" href="index.html">MENU</a>
             </div>
            
                 <ul className="nav navbar-nav" class="nav navbar-nav">
