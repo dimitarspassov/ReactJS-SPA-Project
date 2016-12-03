@@ -9,7 +9,7 @@ const KinveyRequester = (function () {
         function makeAuth(type) {
             switch (type) {
                 case 'guest':
-                    return {'Authorization': "Basic " + btoa("guest" + ":" + "guest")};
+                    return {'Authorization': "Basic " + btoa("guest:guest")}; 
                 case 'basic':
                     return {'Authorization': "Basic " + btoa(kinveyAppKey + ":" + kinveyAppSecret)}; 
                 case 'kinvey':
