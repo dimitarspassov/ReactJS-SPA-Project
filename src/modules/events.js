@@ -5,6 +5,12 @@ function loadEvents(callback) {
         .then(callback);
 }
 
+function loadSingleEvent(callback, id) {
+
+    KinveyRequester.get('appdata', 'events/'+id, 'guest')
+        .then(callback);
+}
+
 function create( title, description, date, location, image, callback) {
     let author = sessionStorage.getItem('username')
     let eventData = {
@@ -16,8 +22,8 @@ function create( title, description, date, location, image, callback) {
         image:image
     };
 
-    KinveyRequester.post('appdata', 'events', eventData, 'kinvey')
+    KinveyRequester.post('appdata', 'events', eventData, 'guest')
         .then(callback);
 }
 
-export {loadEvents, create};
+export {loadEvents, create, loadSingleEvent};
