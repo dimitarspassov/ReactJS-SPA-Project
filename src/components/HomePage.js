@@ -22,7 +22,6 @@ class HomePage extends React.Component {
 		loadEvents(this.onLoadSuccess);
 	}
 	render() {
-		let len = this.state.events.length
         return (
             <div className="container">
                     {this.state.events.reverse().splice(0,3).map((event, i) => {
