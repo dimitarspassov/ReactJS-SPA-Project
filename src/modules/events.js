@@ -1,7 +1,7 @@
 import KinveyRequester from './requester';
 
 function loadEvents(callback) {
-    KinveyRequester.get('appdata', 'events', 'kinvey')
+    KinveyRequester.get('appdata', 'events', 'guest')
         .then(callback);
 }
 
@@ -22,7 +22,7 @@ function create( title, description, date, location, image, callback) {
         image:image
     };
 
-    KinveyRequester.post('appdata', 'events', eventData, 'kinvey')
+    KinveyRequester.post('appdata', 'events', eventData, 'guest')
         .then(callback);
 }
 
