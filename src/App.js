@@ -2,7 +2,6 @@ import React from 'react';
 import Nav from './components/common/Nav';
 import Alert from './components/common/Alert';
 import Footer from './components/common/Footer';
-import $ from 'jquery'
 
 class App extends React.Component {
         render() {

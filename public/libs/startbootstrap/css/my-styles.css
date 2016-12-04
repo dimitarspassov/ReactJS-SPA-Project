@@ -36,7 +36,9 @@ label {
 	color: #5cb85c !important;
 	background-color: #fff !important;
 }
-
+.portfolio-item {
+	text-align: center;
+}
 .alert {
 	 border-radius: 0px;
 	 text-align: center;

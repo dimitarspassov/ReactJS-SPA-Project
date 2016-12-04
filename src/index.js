@@ -10,6 +10,7 @@ import Login from './components/Login'
 import Logout from './components/Logout'
 import Register from './components/Register'
 import SingleEventPage from './components/SingleEventPage'
+import EditPage from './components/Edit/EditPage'
 import MyEvents from './components/MyEvents'
 
 
@@ -23,6 +24,7 @@ render(
             <Route path="/createEvent" component={CreateEvent} />
             <Route path="/myEvents" component={MyEvents} />
             <Route path="/details/:id" component={SingleEventPage} />
+            <Route path="/edit/:id" component={EditPage} />
             <Route path="logout" component={Logout}/>
         </Route>
     </Router>,
