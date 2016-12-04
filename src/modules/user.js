@@ -28,9 +28,16 @@ function register(username, password, email, callback) {
 
     function registerSuccess(userInfo) {
         console.log('success')
-        observer.showSuccess('Successful registration.');
+       // observer.showSuccess('Successful registration.');
         saveSession(userInfo);
-        callback(true);
+
+        let data = {
+            _id: userInfo._id,
+            events: ["empty"]
+        };
+        KinveyRequester.post('appdata', 'user-events', data, "kinvey").then(function () {
+            callback(true);
+        })
     }
 }
 

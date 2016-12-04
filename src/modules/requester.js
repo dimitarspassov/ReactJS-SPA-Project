@@ -43,21 +43,21 @@ const KinveyRequester = (function () {
             });
         }
 
-        // function update(module, uri, data, auth) {
-        //     const kinveyLoginUrl = kinveyBaseUrl + module + "/" + kinveyAppKey + "/" + uri;
-        //     const kinveyAuthHeaders = makeAuth(auth);
+        function update(module, uri, data, auth) {
+            const kinveyLoginUrl = kinveyBaseUrl + module + "/" + kinveyAppKey + "/" + uri;
+            const kinveyAuthHeaders = makeAuth(auth);
             
-        //     let request = {
-        //         method: "PUT",
-        //         url: kinveyLoginUrl,
-        //         headers: kinveyAuthHeaders,
-        //         data: data
-        //     };
+            let request = {
+                method: "PUT",
+                url: kinveyLoginUrl,
+                headers: kinveyAuthHeaders,
+                data: data
+            };
             
-        //     return $.ajax(request);
-        // }
+            return $.ajax(request);
+        }
 
-        return {get, post}
+        return {get, post, update}
     })();
 
 export default KinveyRequester;

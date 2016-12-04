@@ -12,6 +12,8 @@ class SingleEventPage extends React.Component {
             eventData: {}
         };
         this.onLoadSuccess = this.onLoadSuccess.bind(this);
+        this.attendBtn = this.attendBtn.bind(this);
+
     }
 
     onLoadSuccess(response) {
@@ -46,14 +48,14 @@ class SingleEventPage extends React.Component {
             btn.removeClass("btn btn-outline-success btn-lg")
             btn.addClass("btn btn-success btn-lg")
             btn.text("I'm comming!")
-            attend(this.props.eventId)
+            attend(this.state.eventId)
 
         }
         else{
             btn.removeClass("btn btn-success btn-lg")
             btn.addClass("btn btn-outline-success btn-lg")
             btn.text("I wanna come!")
-            leave(this.props.eventId)
+            leave(this.state.eventId)
         }
     }
 

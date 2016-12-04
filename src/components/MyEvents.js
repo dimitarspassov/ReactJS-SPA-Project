@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router';
-import {loadEvents} from '../modules/events';
+import {loadEvents, loadAttendingEvents} from '../modules/events';
 
 class Events extends React.Component {
 
@@ -15,9 +15,17 @@ class Events extends React.Component {
 
     onLoadSuccess(response) {
         // Display events
+        //console.log("eli")
         let myEvents = response.filter(x => {return x.author == sessionStorage.getItem('username')})
-        let attendingEvents = [] //ToDo
-        this.setState({events: myEvents, attendingEvents: attendingEvents})
+        //loadAttendingEvents();
+        //let attendingEvents = JSON.parse(sessionStorage.getItem("attendingEvents"))
+        //let renderAttendingEvents = []
+        //for(let e of attendingEvents){
+        //    renderAttendingEvents.push(response.filter(x => {return x._id == e}))
+        //}
+        //console.log(response)
+        //console.log(renderAttendingEvents)
+        this.setState({events: myEvents, attendingEvents: []})
     }
 
     componentDidMount() {
@@ -50,7 +58,7 @@ class Events extends React.Component {
                                     <Link className="btn btn-default btn-lg" to={"/details/" + event._id}>ReadMore</Link>
                                 </div>)}
                         </div>
-                    )};
+                    )}
                 </div>
 
             <div className="box">
@@ -76,7 +84,7 @@ class Events extends React.Component {
                         <Link className="btn btn-default btn-lg" to={"/details/" + event._id}>ReadMore</Link>
                     </div>)}
             </div>
-        )};
+        )}
     </div>
     </div>
         )
