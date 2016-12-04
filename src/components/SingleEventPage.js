@@ -1,8 +1,7 @@
 import React from 'react';
 import {loadSingleEvent, attend, leave, isAttending} from '../modules/events';
 import $ from 'jquery';
-
-//import {Link} from 'react-router';
+import {Link} from 'react-router';
 
 class SingleEventPage extends React.Component {
     constructor(props) {
@@ -57,6 +56,13 @@ class SingleEventPage extends React.Component {
         }
     }
 
+    editAvailable(){
+
+        if(sessionStorage.getItem('username')===this.state.eventData.author){
+            return <Link className="btn btn-default btn-lg" to={"/edit/" + this.state.eventId}>Edit</Link>;
+        }
+    }
+
     render() {
         if(this.state.eventData.author === sessionStorage.getItem("username")){
             $("#attendBtn").css("display", "none")
@@ -81,9 +87,9 @@ class SingleEventPage extends React.Component {
                                 <small>{this.state.eventData.date}</small>
                             </h2>
                             <p>{this.state.eventData.description}</p>
+                            {this.editAvailable()}
                             <hr></hr>
                         </div>
-
                     </div>
                 </div>
             </div>

@@ -39,7 +39,7 @@ export default class EditForm extends React.Component {
                 </div>
                 <div className="form-group">
                     <label>Img:</label>
-                    <img src={this.props.image}></img>
+                    <img src={this.props.image} alt=""></img>
                 </div>
                 <div className="form-group">
                     <label>Description:</label>
