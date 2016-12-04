@@ -7,7 +7,8 @@ class Events extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            events: []
+            events: [],
+            attendingEvents: []
         };
         this.onLoadSuccess = this.onLoadSuccess.bind(this);
     }
@@ -15,7 +16,8 @@ class Events extends React.Component {
     onLoadSuccess(response) {
         // Display events
         let myEvents = response.filter(x => {return x.author == sessionStorage.getItem('username')})
-        this.setState({events: myEvents})
+        let attendingEvents = [] //ToDo
+        this.setState({events: myEvents, attendingEvents: attendingEvents})
     }
 
     componentDidMount() {
@@ -28,10 +30,10 @@ class Events extends React.Component {
                 <div className="box">
                     <hr/>
                     <h2 className="intro-text text-center">
-                        <strong>Events hosted By Me</strong>
+                        <strong>Events I'm attending</strong>
                     </h2>
                     <hr/>
-                    {(this.state.events.chunk_inefficient(3)).map(row =>
+                    {(this.state.attendingEvents.chunk_inefficient(3)).map(row =>
                         <div className="row">
                             {row.map(event =>
                                 <div id={event._id} className="col-md-4 portfolio-item">
@@ -50,7 +52,33 @@ class Events extends React.Component {
                         </div>
                     )};
                 </div>
+
+            <div className="box">
+            <hr/>
+            <h2 className="intro-text text-center">
+            <strong>Events hosted By Me</strong>
+        </h2>
+        <hr/>
+        {(this.state.events.chunk_inefficient(3)).map(row =>
+            <div className="row">
+                {row.map(event =>
+                    <div id={event._id} className="col-md-4 portfolio-item">
+                        <Link to={"/details/" + event._id}>
+                            <img className="img-responsive" src={event.image} alt=""/>
+                        </Link>
+                        <h2>
+                            <h3>{event.title}
+                                <br/>
+                                <small>{event.date}</small>
+                            </h3>
+                        </h2>
+                        <p>{event.description}</p>
+                        <Link className="btn btn-default btn-lg" to={"/details/" + event._id}>ReadMore</Link>
+                    </div>)}
             </div>
+        )};
+    </div>
+    </div>
         )
     }
 }

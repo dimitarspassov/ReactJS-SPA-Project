@@ -7,11 +7,12 @@ class Nav extends React.Component {
     }
   render() {
      let navbar = {};
-        if (this.props.loggedIn) {
+        if (sessionStorage.getItem("username")) {
             navbar = (
                 <ul className="nav navbar-nav">
                      <li><Link to="/">Home</Link></li>
                     <li><Link to="/events">Events</Link></li>
+                    <li><Link to="/myEvents">My Events</Link></li>
                     <li><Link to="/createEvent">Create Event</Link></li>
                     <li><Link to="/logout">Logout</Link></li>
                 </ul>
