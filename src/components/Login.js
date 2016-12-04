@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { login } from '../modules/user'
+import { login } from '../modules/user';
 
 class Login extends Component {
    constructor() {
@@ -10,7 +10,6 @@ class Login extends Component {
 
     onSubmitHandler(event) {
         event.preventDefault();
-        //this.setState({ submitDisabled: true });
         login(this.username.value, this.password.value, this.onSubmitResponse);
     }
 

@@ -2,7 +2,7 @@ import React from 'react';
 import {loadSingleEvent, attend, leave, isAttending} from '../modules/events';
 import $ from 'jquery';
 
-import {Link} from 'react-router';
+//import {Link} from 'react-router';
 
 class SingleEventPage extends React.Component {
     constructor(props) {
@@ -58,7 +58,7 @@ class SingleEventPage extends React.Component {
     }
 
     render() {
-        if(this.state.eventData.author == sessionStorage.getItem("username")){
+        if(this.state.eventData.author === sessionStorage.getItem("username")){
             $("#attendBtn").css("display", "none")
         }
         return (

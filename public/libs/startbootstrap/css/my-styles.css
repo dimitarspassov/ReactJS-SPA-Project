@@ -35,6 +35,13 @@ label {
 .btn-success:focus, .btn-outline-success:hover {
 	color: #5cb85c !important;
 	background-color: #fff !important;
+}
 
+.alert {
+	 border-radius: 0px;
+	 text-align: center;
+	 font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+     font-size: 1.25em;
+    /*letter-spacing: 1px*/
 }
  

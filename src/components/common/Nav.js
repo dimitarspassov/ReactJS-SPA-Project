@@ -2,9 +2,6 @@ import React from 'react';
 import {Link} from 'react-router'
 
 class Nav extends React.Component {
-    constructor(){
-        super()
-    }
   render() {
      let navbar = {};
         if (sessionStorage.getItem("username")) {
