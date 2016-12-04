@@ -10,12 +10,11 @@ class Register extends Component {
 
     onSubmitHandler(event) {
         event.preventDefault();
-        // if (this.state.password !== this.state.confirmPassword) {
-        //     alert("Passwords don't match");
-        //     return;
-        // }
-        //this.setState({ submitDisabled: true });
-        register(this.username.value, this.password.value, this.email.value, this.onSubmitResponse);
+        if (this.password.value !== this.confirmPassword.value) {
+            alert("Passwords don't match");
+        } else {
+            register(this.username.value, this.password.value, this.email.value, this.onSubmitResponse);
+        }
     }
 
     onSubmitResponse(response) {
