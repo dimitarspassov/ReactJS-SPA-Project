@@ -41,19 +41,17 @@ class Events extends React.Component {
                         <strong>Events</strong>
                     </h2>
                     <hr/>
-                    {(this.state.events.chunk_inefficient(3)).map(row =>
-                        <div className="row">
+                    {(this.state.events.chunk_inefficient(3)).map((row, i) =>
+                        <div className="row" key={i}>
                             {row.map(event =>
-                                <div id={event._id} className="col-md-4 portfolio-item">
+                                <div key={event._id} id={event._id} className="col-md-4 portfolio-item">
                                     <Link to={"/details/" + event._id}>
                                         <img className="img-responsive" src={event.image} alt=""/>
                                     </Link>
-                                    <h2>
                                         <h3>{event.title}
                                             <br/>
                                             <small>{event.date}</small>
                                         </h3>
-                                    </h2>
                                     <p>{event.description}</p>
                                     <Link className="btn btn-default btn-lg" to={"/details/" + event._id}>ReadMore</Link>
                                 </div>)}

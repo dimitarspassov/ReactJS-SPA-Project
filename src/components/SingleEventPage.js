@@ -76,7 +76,7 @@ class SingleEventPage extends React.Component {
                             </div>
                         </div>
                         <div className="col-lg-12 text-center">
-                            <img className="img-responsive img-border img-full" src={this.state.eventData.image}></img>
+                            <img className="img-responsive img-border img-full" src={this.state.eventData.image} alt=""></img>
                             <h2>
                                 <small>{this.state.eventData.date}</small>
                             </h2>

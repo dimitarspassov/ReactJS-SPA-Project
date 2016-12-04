@@ -1,7 +1,5 @@
 import React from 'react';
 import {create} from '../modules/events';
-import $ from 'jquery';
-
 
 class CreateEvent extends React.Component {
 
