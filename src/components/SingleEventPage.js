@@ -25,9 +25,9 @@ class SingleEventPage extends React.Component {
         loadSingleEvent(this.onLoadSuccess, this.state.eventId);
 
         let btn = $("#attendBtn");
-        if(!sessionStorage.getItem("username")){
-            btn.css("display", "none")
-        }
+        //if(!sessionStorage.getItem("username")){
+        //    btn.css("display", "none")
+       // }
         if(isAttending(this.state.eventId)){
             btn.removeClass("btn btn-outline-success btn-lg")
             btn.addClass("btn btn-success btn-lg")
@@ -39,9 +39,9 @@ class SingleEventPage extends React.Component {
     attendBtn(){
         let btn = $("#attendBtn")
 
-       // if(!sessionStorage.getItem("username")){
-        //    return this.context.router.push('/login');       ????
-       // }
+        if(!sessionStorage.getItem("username")){
+            return this.context.router.push('/login');
+        }
 
         if(btn.hasClass("btn btn-outline-success btn-lg")){
             btn.removeClass("btn btn-outline-success btn-lg")
@@ -98,5 +98,9 @@ class SingleEventPage extends React.Component {
         );
     }
 }
+
+SingleEventPage.contextTypes = {
+    router: React.PropTypes.object
+};
 
 export default SingleEventPage;
