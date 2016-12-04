@@ -1,8 +1,7 @@
 import React from 'react';
 import {loadSingleEvent, attend, leave, isAttending} from '../modules/events';
 import $ from 'jquery';
-
-//import {Link} from 'react-router';
+import {Link} from 'react-router';
 
 class SingleEventPage extends React.Component {
     constructor(props) {
@@ -12,6 +11,8 @@ class SingleEventPage extends React.Component {
             eventData: {}
         };
         this.onLoadSuccess = this.onLoadSuccess.bind(this);
+        this.attendBtn = this.attendBtn.bind(this);
+
     }
 
     onLoadSuccess(response) {
@@ -46,14 +47,21 @@ class SingleEventPage extends React.Component {
             btn.removeClass("btn btn-outline-success btn-lg")
             btn.addClass("btn btn-success btn-lg")
             btn.text("I'm comming!")
-            attend(this.props.eventId)
+            attend(this.state.eventId)
 
         }
         else{
             btn.removeClass("btn btn-success btn-lg")
             btn.addClass("btn btn-outline-success btn-lg")
             btn.text("I wanna come!")
-            leave(this.props.eventId)
+            leave(this.state.eventId)
+        }
+    }
+
+    editAvailable(){
+
+        if(sessionStorage.getItem('username')===this.state.eventData.author){
+            return <Link className="btn btn-default btn-lg" to={"/edit/" + this.state.eventId}>Edit</Link>;
         }
     }
 
@@ -81,9 +89,9 @@ class SingleEventPage extends React.Component {
                                 <small>{this.state.eventData.date}</small>
                             </h2>
                             <p>{this.state.eventData.description}</p>
+                            {this.editAvailable()}
                             <hr></hr>
                         </div>
-
                     </div>
                 </div>
             </div>

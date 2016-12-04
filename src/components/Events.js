@@ -53,10 +53,10 @@ class Events extends React.Component {
                                             <small>{event.date}</small>
                                         </h3>
                                     <p>{event.description}</p>
-                                    <Link className="btn btn-default btn-lg" to={"/details/" + event._id}>ReadMore</Link>
+                                    <Link className="btn btn-default btn-lg"  to={"/details/" + event._id}>ReadMore</Link>
                                 </div>)}
                         </div>
-                    )};
+                    )}
 
                     <div className="row text-center">
                         <div className="col-lg-12">

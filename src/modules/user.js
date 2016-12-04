@@ -13,7 +13,6 @@ function login(username, password, callback) {
         .then(loginSuccess);
 
     function loginSuccess(userInfo) {
-        observer.showSuccess('Successful login.');
         saveSession(userInfo);
         callback(true);
     }
@@ -30,9 +29,17 @@ function register(username, password, email, callback) {
         .then(registerSuccess);
 
     function registerSuccess(userInfo) {
-        observer.showSuccess('Successful registration.');
+        console.log('success')
+       // observer.showSuccess('Successful registration.');
         saveSession(userInfo);
-        callback(true);
+
+        let data = {
+            _id: userInfo._id,
+            events: ["empty"]
+        };
+        KinveyRequester.post('appdata', 'user-events', data, "kinvey").then(function () {
+            callback(true);
+        })
     }
 }
 
@@ -43,7 +50,6 @@ function logout(callback) {
 
     function logoutSuccess(response) {
         sessionStorage.clear();
-        observer.showSuccess('Successful registration.');
         observer.onSessionUpdate();
         callback(true);
     }

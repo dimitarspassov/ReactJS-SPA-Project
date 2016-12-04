@@ -16,7 +16,7 @@ class CreateEvent extends React.Component {
 
     onSubmitResponse(response) {
         if (response === true) {
-           this.context.router.push('/events');
+      //     this.context.router.push('/events');
         } else {
             // ToDo: Something went wrong, let the user try again
         }
