@@ -14,8 +14,8 @@ class Alert extends Component {
         this.hide = this.hide.bind(this);
         this.handleAjaxError = this.handleAjaxError.bind(this);
 
-        observer.showSuccess = this.showSuccess.bind(this);
-        observer.showError = this.showError.bind(this);
+        //observer.showSuccess = this.showSuccess.bind(this);
+        //observer.showError = this.showError.bind(this);
     }
 
     componentDidMount() {

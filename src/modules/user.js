@@ -1,5 +1,7 @@
 import KinveyRequester from './requester';
 import observer from './observer';
+//import Alert from '../components/common/Alert';
+
 
 function login(username, password, callback) {
     let userData = {
