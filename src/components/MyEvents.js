@@ -14,7 +14,6 @@ class Events extends React.Component {
     }
 
     onLoadSuccess(response) {
-        // Display events
         let myEvents = response.filter(x => {return x.author === sessionStorage.getItem('username')})
         loadAttendingEvents();
         let attendingEvents = JSON.parse(sessionStorage.getItem("attendingEvents"))
@@ -28,7 +27,6 @@ class Events extends React.Component {
     }
 
     componentDidMount() {
-        // Request list of events from the server
         loadEvents(this.onLoadSuccess);
     }
 
@@ -40,19 +38,17 @@ class Events extends React.Component {
                         <strong>Events I'm attending</strong>
                     </h2>
                     <hr/>
-                    {(this.state.attendingEvents.chunk_inefficient(3)).map(row =>
-                        <div className="row">
+                    {(this.state.attendingEvents.chunk_inefficient(3)).map((row, i) =>
+                        <div className="row" key={i}>
                             {row.map(event =>
-                                <div id={event._id} className="col-md-4 portfolio-item">
+                                <div id={event._id} key={event._id} className="col-md-4 portfolio-item">
                                     <Link to={"/details/" + event._id}>
                                         <img className="img-responsive" src={event.image} alt=""/>
                                     </Link>
-                                    <h2>
                                         <h3>{event.title}
                                             <br/>
                                             <small>{event.date}</small>
                                         </h3>
-                                    </h2>
                                     <p>{event.description}</p>
                                     <Link className="btn btn-default btn-lg" to={"/details/" + event._id}>ReadMore</Link>
                                 </div>)}

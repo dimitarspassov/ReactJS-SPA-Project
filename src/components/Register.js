@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { register } from '../modules/user'
-import { alert } from './common/Alert'
+import { alert } from '../modules/alerts'
 
 class Register extends Component {
       constructor() {

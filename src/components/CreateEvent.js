@@ -1,6 +1,6 @@
 import React from 'react';
 import {create} from '../modules/events';
-import { alert } from './common/Alert'
+import { alert } from '../modules/alerts'
 
 class CreateEvent extends React.Component {
 

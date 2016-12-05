@@ -1,7 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router';
 import {loadEvents} from '../modules/events';
-import Pager from 'react-pager';
 
 Object.defineProperty(Array.prototype, 'chunk_inefficient', {
     value: function (chunkSize) {
@@ -15,17 +14,12 @@ Object.defineProperty(Array.prototype, 'chunk_inefficient', {
 });
 
 class Events extends React.Component {
-
     constructor() {
         super();
         this.state = {
             events: [],
-            totalEvents: 3,
-            current: 1,
-            visiblePage: 3,
         };
         this.onLoadSuccess = this.onLoadSuccess.bind(this);
-        this.handlePageChanged = this.handlePageChanged.bind(this);
     }
 
     onLoadSuccess(response) {
@@ -35,10 +29,6 @@ class Events extends React.Component {
     componentWillMount() {
         loadEvents(this.onLoadSuccess);
     }
-
-    handlePageChanged(newPage) {
-        this.setState({ current : newPage });
-    } 
 
     render() {
         return (
@@ -65,14 +55,6 @@ class Events extends React.Component {
                                 </div>)}
                         </div>
                     )}
-
-                <Pager
-                    total={this.state.total}
-                    current={this.state.current}
-                    visiblePages={this.state.visiblePage}
-                    titles={{ first: 'First', last: 'Last' }}
-                    onPageChanged={this.handlePageChanged}
-                />
                 </div>
             </div>
         )

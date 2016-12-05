@@ -15,5 +15,3 @@ function alert(type, text) {
 }
 
 export { alert };
-
-

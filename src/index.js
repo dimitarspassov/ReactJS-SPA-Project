@@ -12,6 +12,7 @@ import Register from './components/Register'
 import SingleEventPage from './components/SingleEventPage'
 import EditPage from './components/Edit/EditPage'
 import MyEvents from './components/MyEvents'
+import NotFound from './components/NotFound'
 
 
 render(
@@ -25,7 +26,8 @@ render(
             <Route path="/myEvents" component={MyEvents} />
             <Route path="/details/:id" component={SingleEventPage} />
             <Route path="/edit/:id" component={EditPage} />
-            <Route path="logout" component={Logout}/>
+            <Route path="/logout" component={Logout}/>
+            <Route path="*" component={NotFound}/>
         </Route>
     </Router>,
     document.getElementById('root')

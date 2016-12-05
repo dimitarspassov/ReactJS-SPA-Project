@@ -1,7 +1,5 @@
 import KinveyRequester from './requester';
 import observer from './observer';
-//import Alert from '../components/common/Alert';
-
 
 function login(username, password, callback) {
     let userData = {
@@ -29,8 +27,6 @@ function register(username, password, email, callback) {
         .then(registerSuccess);
 
     function registerSuccess(userInfo) {
-        console.log('success')
-       // observer.showSuccess('Successful registration.');
         saveSession(userInfo);
 
         let data = {
