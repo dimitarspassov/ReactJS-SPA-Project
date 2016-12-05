@@ -15,7 +15,7 @@ class Events extends React.Component {
 
     onLoadSuccess(response) {
         // Display events
-        let myEvents = response.filter(x => {return x.author == sessionStorage.getItem('username')})
+        let myEvents = response.filter(x => {return x.author === sessionStorage.getItem('username')})
         loadAttendingEvents();
         let attendingEvents = JSON.parse(sessionStorage.getItem("attendingEvents"))
         let renderAttendingEvents = []

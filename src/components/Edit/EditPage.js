@@ -6,6 +6,11 @@ import {loadSingleEvent, editEvent} from '../../modules/events';
 export default class EditPage extends Component {
     constructor(props) {
         super(props);
+        this.onChangeHandler = this.onChangeHandler.bind(this);
+        this.onSubmitHandler = this.onSubmitHandler.bind(this);
+        this.onSubmitResponse = this.onSubmitResponse.bind(this);
+        this.onLoadSuccess = this.onLoadSuccess.bind(this);
+
         this.state = {
             author: '',
             title: '',
@@ -14,20 +19,10 @@ export default class EditPage extends Component {
             location: '',
             image: '',
             submitDisabled: true};
-        this.bindEventHandlers();
     }
 
     componentDidMount() {
-        // Populate form
         loadSingleEvent(this.onLoadSuccess, this.props.params.id);
-    }
-
-    bindEventHandlers() {
-        // Make sure event handlers have the correct context
-        this.onChangeHandler = this.onChangeHandler.bind(this);
-        this.onSubmitHandler = this.onSubmitHandler.bind(this);
-        this.onSubmitResponse = this.onSubmitResponse.bind(this);
-        this.onLoadSuccess = this.onLoadSuccess.bind(this);
     }
 
     onLoadSuccess(response) {
@@ -65,10 +60,8 @@ export default class EditPage extends Component {
 
     onSubmitResponse(response) {
         if (response === true) {
-            // Navigate away from login page
             this.context.router.push('/');
         } else {
-            // Something went wrong, let the user try again
             this.setState({submitDisabled: true});
         }
     }

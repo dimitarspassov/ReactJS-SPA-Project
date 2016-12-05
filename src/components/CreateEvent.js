@@ -31,7 +31,7 @@ class CreateEvent extends React.Component {
                             <strong>Create Event</strong>
                         </h2>
                         <hr/>
-                            <form className="form">
+                            <form className="form" onSubmit={this.onSubmitHandler}>
                                     <div className="row">
                                         <div className="form-group col-xs-offset-4 col-xs-4">
                                         <label>Title</label>
@@ -89,7 +89,7 @@ class CreateEvent extends React.Component {
                                     </div>
 
                                 <div className="form-group col-lg-12">
-                                    <button type="submit" onClick={this.onSubmitHandler} className="btn btn-default">Submit</button>
+                                    <button type="submit" className="btn btn-default">Submit</button>
                                 </div>
                             </form>
                     </div>

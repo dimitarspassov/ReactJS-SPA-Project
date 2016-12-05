@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import $ from 'jquery';
-import observer from '../../modules/observer';
+//import observer from '../../modules/observer';
 
 class Alert extends Component {
     constructor() {

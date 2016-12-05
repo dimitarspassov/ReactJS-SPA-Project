@@ -24,12 +24,10 @@ class Events extends React.Component {
     }
 
     onLoadSuccess(response) {
-        // Display events
         this.setState({events: response})
     }
 
-    componentDidMount() {
-        // Request list of events from the server
+    componentWillMount() {
         loadEvents(this.onLoadSuccess);
     }
 

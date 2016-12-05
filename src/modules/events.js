@@ -59,7 +59,7 @@ function attend(eventID) {
 function leave(eventID) {
     KinveyRequester.get('appdata', 'user-events/'+ sessionStorage.getItem('userId'), 'kinvey').then(function (response) {
         let events = response.events
-        events = events.filter(x => {return x != eventID+""})
+        events = events.filter(x => {return x !== eventID+""})
         let data= {
             events: events
         }
@@ -69,7 +69,7 @@ function leave(eventID) {
 
 function loadAttendingEvents(){
     KinveyRequester.get('appdata', 'user-events/'+ sessionStorage.getItem('userId'), 'kinvey').then(function (res) {
-        let eventsArray = res.events.filter(x => {return x != "empty"})
+        let eventsArray = res.events.filter(x => {return x !== "empty"})
         sessionStorage.setItem('attendingEvents',JSON.stringify(eventsArray))
    })
 }
