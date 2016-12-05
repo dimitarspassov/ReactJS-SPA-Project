@@ -77,7 +77,6 @@ function loadAttendingEvents(){
 function isAttending(eventID) {
    if(!sessionStorage.getItem('attendingEvents')) loadAttendingEvents()
     let attendingEvents = JSON.parse(sessionStorage.getItem("attendingEvents"))
-    let renderAttendingEvents = []
     if(attendingEvents.indexOf(eventID) >= 0) {
          return true   
     }

@@ -2,8 +2,8 @@ import React from 'react';
 import $ from 'jquery';
 import {Link} from 'react-router';
 import Modal from 'react-modal';
-import {loadSingleEvent, attend, leave, isAttending, deleteCurrentEvent} from '../modules/events';
-import { alert } from '../modules/alerts'
+import {loadSingleEvent, attend, leave, isAttending, deleteCurrentEvent} from '../models/events';
+import { alert } from '../models/alerts'
 
 class SingleEventPage extends React.Component {
     constructor(props) {

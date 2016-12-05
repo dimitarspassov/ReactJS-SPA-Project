@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import EditForm from './EditForm';
-import {loadSingleEvent, editEvent} from '../../modules/events';
-import { alert } from '../../modules/alerts';
+import {loadSingleEvent, editEvent} from '../../models/events';
+import { alert } from '../../models/alerts';
 
 export default class EditPage extends Component {
     constructor(props) {

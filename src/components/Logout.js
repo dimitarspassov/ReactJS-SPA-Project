@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { logout } from '../modules/user';
-import { alert } from '../modules/alerts'
+import { logout } from '../models/user';
+import { alert } from '../models/alerts'
 
 class Logout extends Component {
     constructor() {

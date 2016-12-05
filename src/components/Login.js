@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import { login } from '../modules/user';
-import { alert } from '../modules/alerts'
+import { login } from '../models/user';
+import { alert } from '../models/alerts'
 
 class Login extends Component {
    constructor() {

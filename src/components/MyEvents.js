@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router';
-import {loadEvents, loadAttendingEvents} from '../modules/events';
+import {loadEvents, loadAttendingEvents} from '../models/events';
 
 class Events extends React.Component {
 

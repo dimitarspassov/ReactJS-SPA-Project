@@ -9,7 +9,8 @@ function alert(type, text) {
                 open: {height: 'toggle'}, 
                 close: {height: 'toggle'}, 
                 easing: 'swing',
-                speed: 500
+                speed: 500,
+                timeout:2000
             }});
     return alert
 }
