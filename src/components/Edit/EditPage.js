@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import EditForm from './EditForm';
 import {loadSingleEvent, editEvent} from '../../modules/events';
-
+import { alert } from '../common/Alert';
 
 export default class EditPage extends Component {
     constructor(props) {
@@ -60,8 +60,10 @@ export default class EditPage extends Component {
 
     onSubmitResponse(response) {
         if (response === true) {
+            alert('success', 'You successfully edited your event.')
             this.context.router.push('/');
         } else {
+             alert('error', 'An error occured. Please try again.')
             this.setState({submitDisabled: true});
         }
     }

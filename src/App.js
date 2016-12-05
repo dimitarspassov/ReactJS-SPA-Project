@@ -11,7 +11,6 @@ class App extends React.Component {
                     <div className="brand">Event Storm</div>
                 </div>
                 <Nav/>
-                <Alert/>
                 {this.props.children}       
                 <Footer/>
             </div>

@@ -1,5 +1,6 @@
 import React from 'react';
 import {create} from '../modules/events';
+import { alert } from './common/Alert'
 
 class CreateEvent extends React.Component {
 
@@ -16,9 +17,10 @@ class CreateEvent extends React.Component {
 
     onSubmitResponse(response) {
         if (response === true) {
-            this.context.router.push('/events');
+             alert('success', 'You successfully created a new event.')
+            this.context.router.push('/myEvents');
         } else {
-            // ToDo: Something went wrong, let the user try again
+             alert('error', 'An error occured. Please try again.')
         }
     }
 

@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import { login } from '../modules/user';
+import { alert } from './common/Alert'
 
 class Login extends Component {
    constructor() {
@@ -15,8 +16,10 @@ class Login extends Component {
 
     onSubmitResponse(response) {
         if (response === true) {
+            alert('success', 'You logged in successful.')
             this.context.router.push('/');
         } else {
+          alert('error', 'An error occured. Please try again.')
             this.setState({ submitDisabled: true });
         }
     }

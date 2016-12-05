@@ -1,6 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router';
 import {loadEvents} from '../modules/events';
+import Pager from 'react-pager';
 
 Object.defineProperty(Array.prototype, 'chunk_inefficient', {
     value: function (chunkSize) {
@@ -15,12 +16,16 @@ Object.defineProperty(Array.prototype, 'chunk_inefficient', {
 
 class Events extends React.Component {
 
-    constructor(props) {
-        super(props);
+    constructor() {
+        super();
         this.state = {
-            events: []
+            events: [],
+            totalEvents: 3,
+            current: 1,
+            visiblePage: 3,
         };
         this.onLoadSuccess = this.onLoadSuccess.bind(this);
+        this.handlePageChanged = this.handlePageChanged.bind(this);
     }
 
     onLoadSuccess(response) {
@@ -31,8 +36,13 @@ class Events extends React.Component {
         loadEvents(this.onLoadSuccess);
     }
 
+    handlePageChanged(newPage) {
+        this.setState({ current : newPage });
+    } 
+
     render() {
-        return (<div className="container">
+        return (
+            <div className="container">
                 <div className="box">
                     <hr/>
                     <h2 className="intro-text text-center">
@@ -56,33 +66,13 @@ class Events extends React.Component {
                         </div>
                     )}
 
-                    <div className="row text-center">
-                        <div className="col-lg-12">
-                            <ul className="pagination">
-                                <li>
-                                    <a href="#">&laquo;</a>
-                                </li>
-                                <li className="active">
-                                    <a href="#">1</a>
-                                </li>
-                                <li>
-                                    <a href="#">2</a>
-                                </li>
-                                <li>
-                                    <a href="#">3</a>
-                                </li>
-                                <li>
-                                    <a href="#">4</a>
-                                </li>
-                                <li>
-                                    <a href="#">5</a>
-                                </li>
-                                <li>
-                                    <a href="#">&raquo;</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+                <Pager
+                    total={this.state.total}
+                    current={this.state.current}
+                    visiblePages={this.state.visiblePage}
+                    titles={{ first: 'First', last: 'Last' }}
+                    onPageChanged={this.handlePageChanged}
+                />
                 </div>
             </div>
         )
