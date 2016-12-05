@@ -1,17 +1,25 @@
-import React from 'react';
+import React, {Component} from 'react';
 import EditForm from './EditForm';
 import {loadSingleEvent, editEvent} from '../../modules/events';
 
-export default class EditPage extends React.Component {
+
+export default class EditPage extends Component {
     constructor(props) {
         super(props);
-        this.state = {author: '', title: '', description: '', date: '', location: '', image: ''};
+        this.state = {
+            author: '',
+            title: '',
+            description: '',
+            date: '',
+            location: '',
+            image: '',
+            submitDisabled: true};
         this.bindEventHandlers();
     }
 
     componentDidMount() {
         // Populate form
-        loadSingleEvent(this.onLoadSuccess, this.props.params.id,);
+        loadSingleEvent(this.onLoadSuccess, this.props.params.id);
     }
 
     bindEventHandlers() {
@@ -29,7 +37,8 @@ export default class EditPage extends React.Component {
             description: response.description,
             date: response.date,
             location: response.location,
-            image: response.image
+            image: response.image,
+            submitDisabled: false
         });
     }
 
@@ -43,7 +52,15 @@ export default class EditPage extends React.Component {
     onSubmitHandler(event) {
         event.preventDefault();
         this.setState({submitDisabled: true});
-        editEvent(this.props.params.id, this.state.author, this.state.title, this.state.description, this.state.date, this.state.location, this.state.image, this.onSubmitResponse);
+        editEvent(
+            this.props.params.id,
+            this.state.author,
+            this.state.title,
+            this.state.description,
+            this.state.date,
+            this.state.location,
+            this.state.image,
+            this.onSubmitResponse);
     }
 
     onSubmitResponse(response) {

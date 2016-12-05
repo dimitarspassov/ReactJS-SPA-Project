@@ -11,7 +11,21 @@ function loadSingleEvent(callback, id) {
         .then(callback);
 }
 
-function create( title, description, date, location, image, callback) {
+function editEvent(id, author, title, description, date, location, image, callback) {
+    let eventData = {
+        author:author,
+        title: title,
+        description: description,
+        date: date,
+        location: location,
+        image: image,
+    };
+
+    KinveyRequester.update('appdata', 'events/' + id, eventData, 'kinvey')
+        .then(callback(true));
+}
+
+function create(title, description, date, location, image, callback) {
     let author = sessionStorage.getItem('username')
     let eventData = {
         author: author,
@@ -64,4 +78,4 @@ function isAttending(eventID) {
     return false
 }
 
-export {loadEvents, create, loadSingleEvent, attend, leave, loadAttendingEvents, isAttending};
+export {loadEvents, create, loadSingleEvent, attend, leave, loadAttendingEvents, isAttending, editEvent};
