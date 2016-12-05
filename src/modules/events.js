@@ -22,7 +22,7 @@ function create( title, description, date, location, image, callback) {
         image:image
     };
 
-    KinveyRequester.post('appdata', 'events', eventData, 'guest').then(callback);
+    KinveyRequester.post('appdata', 'events', eventData, 'kinvey').then(callback(true));
 }
 
 function attend(eventID) {
@@ -54,8 +54,14 @@ function loadAttendingEvents(){
    })
 }
 
-function isAttending() {
-
+function isAttending(eventID) {
+   if(!sessionStorage.getItem('attendingEvents')) loadAttendingEvents()
+    let attendingEvents = JSON.parse(sessionStorage.getItem("attendingEvents"))
+    let renderAttendingEvents = []
+    if(attendingEvents.indexOf(eventID) >= 0) {
+         return true   
+    }
+    return false
 }
 
 export {loadEvents, create, loadSingleEvent, attend, leave, loadAttendingEvents, isAttending};

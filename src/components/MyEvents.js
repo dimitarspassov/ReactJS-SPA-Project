@@ -15,17 +15,16 @@ class Events extends React.Component {
 
     onLoadSuccess(response) {
         // Display events
-        //console.log("eli")
         let myEvents = response.filter(x => {return x.author == sessionStorage.getItem('username')})
-        //loadAttendingEvents();
-        //let attendingEvents = JSON.parse(sessionStorage.getItem("attendingEvents"))
-        //let renderAttendingEvents = []
-        //for(let e of attendingEvents){
-        //    renderAttendingEvents.push(response.filter(x => {return x._id == e}))
-        //}
-        //console.log(response)
-        //console.log(renderAttendingEvents)
-        this.setState({events: myEvents, attendingEvents: []})
+        loadAttendingEvents();
+        let attendingEvents = JSON.parse(sessionStorage.getItem("attendingEvents"))
+        let renderAttendingEvents = []
+        for(let e of response){
+           if(attendingEvents.indexOf(e._id) >= 0){
+               renderAttendingEvents.push(e)
+           }
+        }
+        this.setState({events: myEvents, attendingEvents: renderAttendingEvents})
     }
 
     componentDidMount() {
