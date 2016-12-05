@@ -7,14 +7,16 @@ class HomePage extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            events: []
+            events: [],
+            lastThreeEvents:[]
         };
         this.onLoadSuccess = this.onLoadSuccess.bind(this);
     }
 
     onLoadSuccess(response) {
         // Display events
-        this.setState({events: response})
+        this.setState({events: response});
+        this.setState({lastThreeEvents:response.reverse().slice(0,3)})
     }
 
     componentDidMount() {
@@ -33,14 +35,17 @@ class HomePage extends React.Component {
                                 <strong>All events | One place </strong>
                             </h2>
                             <hr></hr>
-                            <img className="img-responsive img-border img-left" src={require("../../public/libs/startbootstrap/img/home-desc-image.jpg")} alt=""/>
+                            <img className="img-responsive img-border img-left"
+                                 src={require("../../public/libs/startbootstrap/img/home-desc-image.jpg")} alt=""/>
                             <hr className="visible-xs"></hr>
                             <p>
                                 Have you ever wanted to put your event ad somewhere all your fans can see it?
-                                Or maybe you are in the beginning of your glory path and want to invite people to your events?
+                                Or maybe you are in the beginning of your glory path and want to invite people to your
+                                events?
                                 We're here to help!
                             </p>
-                            <p><strong>Event Storm </strong> is not only a website for events! What you see is a social network where anyone can share his events!</p>
+                            <p><strong>Event Storm </strong> is not only a website for events! What you see is a social
+                                network where anyone can share his events!</p>
                             <p>Concerts, small gigs, sport events, seminars and many other...</p>
                             <p className="text-center">
                                 <Link to={"/login"}>
@@ -57,7 +62,8 @@ class HomePage extends React.Component {
                         </div>
                     </div>
                 </div>
-                {this.state.events.reverse().splice(0, 3).map((event, i) => {
+
+                {this.state.lastThreeEvents.map((event, i) => {
                     return ( <div key={event._id} className="box">
                         <div className="col-lg-12 text-center">
                             <div id="carousel-example-generic">
