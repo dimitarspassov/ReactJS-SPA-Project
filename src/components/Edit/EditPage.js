@@ -67,6 +67,11 @@ export default class EditPage extends Component {
     }
 
     render() {
+        
+        if (!sessionStorage.getItem("username")) {
+            return this.context.router.push('/login');
+        }
+
         return (
             <div>
                 <h1>Edit Page</h1>

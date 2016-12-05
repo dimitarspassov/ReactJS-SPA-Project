@@ -23,6 +23,11 @@ class CreateEvent extends React.Component {
     }
 
     render() {
+
+        if (!sessionStorage.getItem("username")) {
+            return this.context.router.push('/login');
+        }
+        
         return (<div>
                 <div className="container">
                     <div className="box">
