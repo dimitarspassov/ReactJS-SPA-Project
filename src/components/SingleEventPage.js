@@ -1,8 +1,9 @@
 import React from 'react';
-import {loadSingleEvent, attend, leave, isAttending, deleteCurrentEvent} from '../modules/events';
 import $ from 'jquery';
 import {Link} from 'react-router';
 import Modal from 'react-modal';
+import {loadSingleEvent, attend, leave, isAttending, deleteCurrentEvent} from '../modules/events';
+import { alert } from '../modules/alerts'
 
 class SingleEventPage extends React.Component {
     constructor(props) {
@@ -18,24 +19,19 @@ class SingleEventPage extends React.Component {
     }
 
     onLoadSuccess(response) {
-        // Display event
         this.setState({eventData: response})
     }
 
     componentDidMount() {
-        // Request current event from the server
         loadSingleEvent(this.onLoadSuccess, this.state.eventId);
 
         let btn = $("#attendBtn");
-        //if(!sessionStorage.getItem("username")){
-        //    btn.css("display", "none")
-        // }
+    
         if (isAttending(this.state.eventId)) {
             btn.removeClass("btn btn-outline-success btn-lg");
             btn.addClass("btn btn-success btn-lg");
             btn.text("I'm comming!");
         }
-
     }
 
     attendBtn() {
@@ -50,9 +46,7 @@ class SingleEventPage extends React.Component {
             btn.addClass("btn btn-success btn-lg");
             btn.text("I'm comming!");
             attend(this.state.eventId)
-
-        }
-        else {
+        } else {
             btn.removeClass("btn btn-success btn-lg");
             btn.addClass("btn btn-outline-success btn-lg");
             btn.text("I wanna come!");
@@ -74,10 +68,10 @@ class SingleEventPage extends React.Component {
 
     onSubmitResponse(response) {
         if (response === true) {
-            // Navigate away from login page
+            alert('success', 'You successfully deleted your event.')
             this.context.router.push('/');
         } else {
-            // Something went wrong, let the user try again
+            alert('error', 'An error occured. Please try again.')
             this.setState({submitDisabled: true});
         }
     }

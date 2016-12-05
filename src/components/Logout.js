@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { logout } from '../modules/user';
+import { alert } from '../modules/alerts'
 
 class Logout extends Component {
     constructor() {
@@ -13,9 +14,10 @@ class Logout extends Component {
 
     onSubmitResponse(response) {
         if (response === true) {
+            alert('success', 'You logged out successfully.')
             this.context.router.push('/');
         } else {
-            // Something went wrong, let the user know
+            alert('error', 'An error occured. Please try again.')
         }
     }
 

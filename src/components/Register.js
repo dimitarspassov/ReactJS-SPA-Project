@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { register } from '../modules/user'
+import { alert } from '../modules/alerts'
 
 class Register extends Component {
       constructor() {
@@ -19,8 +20,10 @@ class Register extends Component {
 
     onSubmitResponse(response) {
         if (response === true) {
+           alert('success', 'You registered successfully.')
             this.context.router.push('/');
         } else {
+            alert('error', 'An error occured. Please try again.')
             this.setState({ submitDisabled: true });
         }
     }

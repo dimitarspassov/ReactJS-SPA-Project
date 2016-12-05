@@ -1,6 +1,5 @@
 import React from 'react';
 import Nav from './components/common/Nav';
-import Alert from './components/common/Alert';
 import Footer from './components/common/Footer';
 
 class App extends React.Component {
@@ -11,7 +10,6 @@ class App extends React.Component {
                     <div className="brand">Event Storm</div>
                 </div>
                 <Nav/>
-                <Alert/>
                 {this.props.children}       
                 <Footer/>
             </div>

@@ -14,11 +14,10 @@ Object.defineProperty(Array.prototype, 'chunk_inefficient', {
 });
 
 class Events extends React.Component {
-
-    constructor(props) {
-        super(props);
+    constructor() {
+        super();
         this.state = {
-            events: []
+            events: [],
         };
         this.onLoadSuccess = this.onLoadSuccess.bind(this);
     }
@@ -32,7 +31,8 @@ class Events extends React.Component {
     }
 
     render() {
-        return (<div className="container">
+        return (
+            <div className="container">
                 <div className="box">
                     <hr/>
                     <h2 className="intro-text text-center">
@@ -55,34 +55,6 @@ class Events extends React.Component {
                                 </div>)}
                         </div>
                     )}
-
-                    <div className="row text-center">
-                        <div className="col-lg-12">
-                            <ul className="pagination">
-                                <li>
-                                    <a href="#">&laquo;</a>
-                                </li>
-                                <li className="active">
-                                    <a href="#">1</a>
-                                </li>
-                                <li>
-                                    <a href="#">2</a>
-                                </li>
-                                <li>
-                                    <a href="#">3</a>
-                                </li>
-                                <li>
-                                    <a href="#">4</a>
-                                </li>
-                                <li>
-                                    <a href="#">5</a>
-                                </li>
-                                <li>
-                                    <a href="#">&raquo;</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
                 </div>
             </div>
         )
