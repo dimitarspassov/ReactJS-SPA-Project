@@ -35,7 +35,7 @@ export default class EditForm extends React.Component {
                          <div className="row">
                           <div className="form-group col-xs-offset-4 col-xs-4">
                             <label>Date</label>
-                            <input type="text" className="form-control"
+                            <input type="date" className="form-control"
                                    name="date"
                                    value={this.props.date}
                                    disabled={this.props.submitDisabled}
