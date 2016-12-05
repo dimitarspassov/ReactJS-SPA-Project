@@ -25,6 +25,12 @@ function editEvent(id, author, title, description, date, location, image, callba
         .then(callback(true));
 }
 
+function deleteCurrentEvent(id,callback) {
+
+    KinveyRequester.deleteEvent('appdata', 'events/' + id, 'kinvey')
+        .then(callback(true));
+}
+
 function create(title, description, date, location, image, callback) {
     let author = sessionStorage.getItem('username')
     let eventData = {
@@ -78,4 +84,4 @@ function isAttending(eventID) {
     return false
 }
 
-export {loadEvents, create, loadSingleEvent, attend, leave, loadAttendingEvents, isAttending, editEvent};
+export {loadEvents, create, loadSingleEvent, attend, leave, loadAttendingEvents, isAttending, editEvent, deleteCurrentEvent};
