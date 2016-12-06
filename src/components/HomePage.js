@@ -2,39 +2,55 @@ import React from 'react';
 import {loadEvents} from '../models/events';
 import {Link} from 'react-router';
 
+var Carousel = require('react-responsive-carousel').Carousel;
+
 class HomePage extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            events: [],
-            lastThreeEvents:[]
+            events: []
         };
         this.onLoadSuccess = this.onLoadSuccess.bind(this);
     }
 
     onLoadSuccess(response) {
-        // Display events
-        this.setState({events: response});
-        this.setState({lastThreeEvents:response.reverse().slice(0,3)})
+        this.setState({events: response.reverse().slice(0,5)});
     }
 
-    componentDidMount() {
-        // Request list of events from the server
+    componentWillMount() {
         loadEvents(this.onLoadSuccess);
     }
-
+    
     render() {
         return (
             <div className="container">
                 <div className="row">
                     <div className="box">
                         <div className="col-lg-12">
-                            <hr></hr>
+
+                         <Carousel showArrows={true} autoPlay interval={3000} infiniteLoop={true} showThumbs={false}>
+                            {this.state.events.map((event, i) => {
+                                return (
+                                    <div key={i}>
+                                            <img className="img-responsive carousel" src={event.image} alt=""/>
+                                            <p className="legend">{event.title}</p>
+                                    </div> 
+                                    )
+                            })}
+                            </Carousel>
+                        </div>
+                    </div>
+                </div>
+
+                  <div className="row">
+                    <div className="box">
+                        <div className="col-lg-12">
+                            <hr/>
                             <h2 className="intro-text text-center">
                                 <strong>All events | One place </strong>
                             </h2>
-                            <hr></hr>
+                            <hr/>
                             <img className="img-responsive img-border img-left"
                                  src={require("../../public/libs/startbootstrap/img/home-desc-image.jpg")} alt=""/>
                             <hr className="visible-xs"></hr>
@@ -62,33 +78,6 @@ class HomePage extends React.Component {
                         </div>
                     </div>
                 </div>
-
-                {this.state.lastThreeEvents.map((event, i) => {
-                    return ( <div key={event._id} className="box">
-                        <div className="col-lg-12 text-center">
-                            <div id="carousel-example-generic">
-                                <div className="carousel-inner">
-                                    <div className="item active">
-                                        <Link to={"/details/" + event._id}>
-                                            <img className="img-responsive img-full"
-                                                 src={event.image} alt=""/>
-                                        </Link>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <h2 className="brand-before">
-                            <small>{event.date}</small>
-                        </h2>
-                        <h1 className="brand-name text-center">{event.title}</h1>
-                        <hr className="tagline-divider"/>
-                        <h2>
-                            <small>By:</small>
-                            <strong>{event.author}</strong>
-                        </h2>
-                    </div>)
-                })}
-
             </div>
         );
     }
