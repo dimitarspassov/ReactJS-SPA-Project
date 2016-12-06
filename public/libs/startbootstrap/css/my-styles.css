@@ -52,4 +52,8 @@ label {
 .carousel {
 	height: 600px;
 }
+
+.carousel .slide .legend {
+    font-size: 24px;
+}
  

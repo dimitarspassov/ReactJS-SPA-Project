@@ -26,15 +26,17 @@ class HomePage extends React.Component {
         return (
             <div className="container">
                 <div className="row">
-                    <div className="box">
+                    <div className="box carousel-box">
                         <div className="col-lg-12">
 
                          <Carousel showArrows={true} autoPlay interval={3000} infiniteLoop={true} showThumbs={false}>
                             {this.state.events.map((event, i) => {
                                 return (
                                     <div key={i}>
+                                            <Link to=>
                                             <img className="img-responsive carousel" src={event.image} alt=""/>
                                             <p className="legend">{event.title}</p>
+                                            </Link>
                                     </div> 
                                     )
                             })}
