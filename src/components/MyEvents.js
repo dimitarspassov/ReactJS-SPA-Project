@@ -76,7 +76,6 @@ class Events extends React.Component {
                                 <small>{event.date}</small>
                             </h3>
                         </h2>
-                        <p>{(event.description).slice(0,75)}</p>
                         <Link className="btn btn-default btn-lg" to={"/details/" + event._id}>ReadMore</Link>
                     </div>)}
             </div>

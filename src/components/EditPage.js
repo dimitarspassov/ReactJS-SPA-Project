@@ -10,12 +10,12 @@ export default class EditPage extends Component {
         this.onSubmitHandler = this.onSubmitHandler.bind(this);
         this.onSubmitResponse = this.onSubmitResponse.bind(this);
         this.onLoadSuccess = this.onLoadSuccess.bind(this);
-        //this.onChange = this.onChange.bind(this);
+        this.onChange = this.onChange.bind(this);
 
         this.state = {
             author: '',
             title: '',
-            //value: RichTextEditor.createValueFromString('', 'html'),
+            value: RichTextEditor.createValueFromString('', 'html'),
             date: '',
             location: '',
             image: '',
@@ -31,7 +31,7 @@ export default class EditPage extends Component {
         this.setState({
             author: response.author,
             title: response.title,
-            //value: RichTextEditor.createValueFromString(response.description, 'html'),
+            value: RichTextEditor.createValueFromString(response.description, 'html'),
             date: response.date,
             location: response.location,
             image: response.image,
@@ -46,14 +46,14 @@ export default class EditPage extends Component {
         newState[event.target.name] = event.target.value;
         this.setState(newState);
     }
-     // onChange (value) {
-     //    this.setState({value});
-     //    if (this.props.onChange) {
-     //      this.props.onChange(
-     //        value.toString('html')
-     //      );
-     //    }
-     //  };
+     onChange (value) {
+        this.setState({value});
+        if (this.props.onChange) {
+          this.props.onChange(
+            value.toString('html')
+          );
+        }
+      };
     onSubmitHandler(event) {
         event.preventDefault();
         this.setState({submitDisabled: true});
@@ -61,7 +61,7 @@ export default class EditPage extends Component {
             this.props.params.id,
             this.state.author,
             this.state.title,
-            //this.state.value.toString('html'),
+            this.state.value.toString('html'),
             this.state.date,
             this.state.location,
             this.state.image,
@@ -91,21 +91,24 @@ export default class EditPage extends Component {
                           <strong>Edit Event</strong>
                       </h2>
                       <hr/>
-                <form role="form" onSubmit={this.props.onSubmitHandler}>
+                <form role="form" onSubmit={this.onSubmitHandler}>
                     <div className="row">
                           <div className="form-group col-xs-offset-3 col-xs-6">
                             <label>Title</label>
                             <input type="text" className="form-control"
                                    name="title"
                                    value={this.state.title}
-                                
-                                   onChange={this.state.onChangeHandler}/>
+                                    disabled={this.state.submitDisabled}
+                                   onChange={this.onChangeHandler}/>
                           </div>
                         </div>
                         <div className="row">
                           <div className="form-group col-xs-offset-3 col-xs-6">
                             <label>Description</label>
-                          
+                            <RichTextEditor
+                                value={this.state.value}
+                                onChange={this.onChange}
+                              />
                          </div>
                         </div>
                          <div className="row">
@@ -115,7 +118,7 @@ export default class EditPage extends Component {
                                    name="date"
                                    value={this.state.date}
                                    disabled={this.state.submitDisabled}
-                                   onChange={this.state.onChangeHandler}/>
+                                   onChange={this.onChangeHandler}/>
                         </div>
                         </div>
                         <div className="row">
@@ -125,7 +128,7 @@ export default class EditPage extends Component {
                                    name="location"
                                    value={this.state.location}
                                    disabled={this.state.submitDisabled}
-                                   onChange={this.state.onChangeHandler}/>
+                                   onChange={this.onChangeHandler}/>
                          </div>
                         </div>
                          <div className="row">
@@ -135,7 +138,7 @@ export default class EditPage extends Component {
                                    name="image"
                                    value={this.state.image}
                                    disabled={this.state.submitDisabled}
-                                   onChange={this.state.onChangeHandler}/>
+                                   onChange={this.onChangeHandler}/>
                          </div>
                         </div>
                         
