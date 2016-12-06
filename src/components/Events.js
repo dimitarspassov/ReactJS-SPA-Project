@@ -39,7 +39,6 @@ class Events extends React.Component {
                 eventRows: response.filter(e => new Date(e.date) > Date.now()).chunk_inefficient(3),
             })
         } else if (this.state.sorted === false) {
-            console.log('setvam false');
             this.setState({
                 events: response
                     .filter(e => new Date(e.date) > Date.now())
