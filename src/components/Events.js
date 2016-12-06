@@ -33,15 +33,14 @@ class Events extends React.Component {
     }
 
     onLoadSuccess(response) {
-
         if (this.state.sorted) {
             this.setState({
-                events: response,
+                events:  response.filter(e=>new Date(e.date)>Date.now()),
                 eventRows: response.chunk_inefficient(3),
             })
         } else if (this.state.sorted === false) {
             this.setState({
-                events: response.sort((a, b) => new Date(b._kmd.ect) - new Date(a._kmd.ect)),
+                events:  response.filter(e=>new Date(e.date)>Date.now()).sort((a, b) => new Date(b._kmd.ect) - new Date(a._kmd.ect)),
                 eventRows: response.chunk_inefficient(3),
             })
         }
