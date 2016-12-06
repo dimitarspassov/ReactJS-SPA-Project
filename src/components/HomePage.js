@@ -33,7 +33,7 @@ class HomePage extends React.Component {
                             {this.state.events.map((event, i) => {
                                 return (
                                     <div key={i}>
-                                            <Link to=>
+                                            <Link to={"/details/" + event._id}>
                                             <img className="img-responsive carousel" src={event.image} alt=""/>
                                             <p className="legend">{event.title}</p>
                                             </Link>
@@ -41,6 +41,7 @@ class HomePage extends React.Component {
                                     )
                             })}
                             </Carousel>
+                            
                         </div>
                     </div>
                 </div>
