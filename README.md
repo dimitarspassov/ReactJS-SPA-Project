@@ -1,4 +1,4 @@
-# ReactJS-SPA-Project
+# ReactJS-SPA-TeamProject
 
 <p>This is a sample single page application with the following functionality included:</p>
 

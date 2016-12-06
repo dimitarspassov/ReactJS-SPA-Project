@@ -1,18 +1,22 @@
 import React from 'react';
 import {create} from '../models/events';
-import { alert } from '../models/alerts'
+import { alert } from '../models/alerts';
+import RichTextEditor from 'react-rte';
 
 class CreateEvent extends React.Component {
-
-    constructor(props) {
-        super(props);
+    constructor() {
+        super();
+        this.state = {
+            value: RichTextEditor.createEmptyValue()
+        }
         this.onSubmitHandler = this.onSubmitHandler.bind(this);
         this.onSubmitResponse = this.onSubmitResponse.bind(this);
+        this.onChange = this.onChange.bind(this);
     }
 
     onSubmitHandler(event) {
         event.preventDefault();
-        create(this.title.value, this.description.value, this.date.value, this.location.value, this.image.value, this.onSubmitResponse);
+        create(this.title.value, this.state.value.toString('html'), this.date.value, this.location.value, this.image.value, this.onSubmitResponse);
     }
 
     onSubmitResponse(response) {
@@ -24,8 +28,16 @@ class CreateEvent extends React.Component {
         }
     }
 
-    render() {
+    onChange (value) {
+        this.setState({value});
+        if (this.props.onChange) {
+          this.props.onChange(
+            value.toString('html')
+          );
+        }
+      };
 
+    render() {
         if (!sessionStorage.getItem("username")) {
             return this.context.router.push('/login');
         }
@@ -40,7 +52,7 @@ class CreateEvent extends React.Component {
                         <hr/>
                             <form className="form" onSubmit={this.onSubmitHandler}>
                                     <div className="row">
-                                        <div className="form-group col-xs-offset-4 col-xs-4">
+                                        <div className="form-group col-xs-offset-3 col-xs-6">
                                         <label>Title</label>
                                              <input className="form-control" required
                                                 type="text"
@@ -50,20 +62,18 @@ class CreateEvent extends React.Component {
                                         </div>
                                     </div>
 
-                                    <div className="row">
-                                    <div className="form-group col-xs-offset-4 col-xs-4">
+                                    <div className="row editor">
+                                    <div className="form-group col-xs-offset-3 col-xs-6">
                                         <label>Description</label>
-                                            <textarea className="form-control" 
-                                                name="description"
-                                                ref={(input) => {this.description = input}}
-                                                disabled={this.props.submitDisabled}
-                                                >
-                                            </textarea>
-                                        </div>
+                                        <RichTextEditor
+                                            value={this.state.value}
+                                            onChange={this.onChange}
+                                          />
+                                    </div>
                                     </div>
 
                                     <div className="row">
-                                        <div className="form-group col-xs-offset-4 col-xs-4">
+                                        <div className="form-group col-xs-offset-3 col-xs-6">
                                             <label>Date</label>
                                              <input className="form-control" required
                                                 type="date"
@@ -74,7 +84,7 @@ class CreateEvent extends React.Component {
                                     </div>
 
                                     <div className="row">
-                                        <div className="form-group col-xs-offset-4 col-xs-4">
+                                        <div className="form-group col-xs-offset-3 col-xs-6">
                                             <label>Location</label>
                                                 <input className="form-control" required
                                                     type="text"
@@ -85,7 +95,7 @@ class CreateEvent extends React.Component {
                                     </div>
 
                                     <div className="row">
-                                        <div className="form-group col-xs-offset-4 col-xs-4">
+                                        <div className="form-group col-xs-offset-3 col-xs-6">
                                             <label>Image Url</label>
                                              <input className="form-control" required
                                                     type="text"

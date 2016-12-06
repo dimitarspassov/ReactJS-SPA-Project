@@ -49,13 +49,11 @@ class Events extends React.Component {
     }
 
     handlePageChange(pageNumber) {
-
         this.setState(
             {activePage: pageNumber});
     }
 
     handleSortingChange(selector) {
-
         if (selector === "added") {
 
             this.setState({
@@ -77,7 +75,6 @@ class Events extends React.Component {
 
             this.onLoadSuccess(this.state.events)
         } else if (selector === "soonest") {
-
             this.setState({
                 events: this.state.events.sort((a, b) => new Date(a.date) - new Date(b.date)),
                 eventsRows: this.state.events.sort((a, b) => new Date(a.date) - new Date(b.date)).chunk_inefficient(3),
@@ -89,9 +86,7 @@ class Events extends React.Component {
         }
     }
 
-
     renderEvents(eventsToRender) {
-
         if (eventsToRender !== undefined) {
             return eventsToRender.map(event =>
                 <div key={event._id} id={event._id} className="col-md-4 portfolio-item">
@@ -102,12 +97,10 @@ class Events extends React.Component {
                         <br/>
                         <small>{event.date}</small>
                     </h3>
-                    <p>{(event.description).slice(0, 75)}</p>
                     <Link className="btn btn-default btn-lg"
                           to={"/details/" + event._id}>ReadMore</Link>
                 </div>)
         }
-
     }
 
     render() {
@@ -119,7 +112,6 @@ class Events extends React.Component {
                         <strong>Events</strong>
                     </h2>
                     <hr/>
-
                     <div className="row">
                         <h2 className="intro-text text-center">Sort by:</h2>
                         <div className="intro-text text-center">
@@ -138,11 +130,7 @@ class Events extends React.Component {
 
                     <div className="row">
                         {this.state.eventRows[Number(this.state.activePage) - 1] !== undefined ?
-
-                            this.renderEvents(this.state.eventRows[Number(this.state.activePage) - 1])
-
-                            :
-                            console.log()
+                            this.renderEvents(this.state.eventRows[Number(this.state.activePage) - 1]) : console.log()
                         }
                     </div>
                     <div className="text-center">
@@ -154,7 +142,6 @@ class Events extends React.Component {
                             onChange={this.handlePageChange}
                         />
                     </div>
-
                 </div>
             </div>
         )

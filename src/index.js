@@ -10,10 +10,9 @@ import Login from './components/Login'
 import Logout from './components/Logout'
 import Register from './components/Register'
 import SingleEventPage from './components/SingleEventPage'
-import EditPage from './components/Edit/EditPage'
+import EditPage from './components/EditPage'
 import MyEvents from './components/MyEvents'
 import NotFound from './components/NotFound'
-
 
 render(
     <Router history={ browserHistory }>

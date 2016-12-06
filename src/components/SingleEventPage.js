@@ -77,7 +77,6 @@ class SingleEventPage extends React.Component {
     }
 
     editAvailable() {
-
         if (sessionStorage.getItem('username') === this.state.eventData.author) {
             return (
                 <div>
@@ -146,7 +145,7 @@ class SingleEventPage extends React.Component {
                             <h2>
                                 <small>{this.state.eventData.date}, {this.state.eventData.location}</small>
                             </h2>
-                            <p>{this.state.eventData.description}</p>
+                            <p dangerouslySetInnerHTML={{__html: this.state.eventData.description}}></p>
                             {this.editAvailable()}
                             <hr></hr>
                         </div>

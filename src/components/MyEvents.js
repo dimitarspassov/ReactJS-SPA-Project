@@ -14,7 +14,6 @@ class Events extends React.Component {
     }
 
     onLoadSuccess(response) {
-        // Display events
         let myEvents = response.filter(x => {return x.author === sessionStorage.getItem('username')})
         loadAttendingEvents();
         let attendingEvents = JSON.parse(sessionStorage.getItem("attendingEvents"))
@@ -28,7 +27,6 @@ class Events extends React.Component {
     }
 
     componentDidMount() {
-        // Request list of events from the server
         loadEvents(this.onLoadSuccess);
     }
 
@@ -53,7 +51,6 @@ class Events extends React.Component {
                                             <small>{event.date}</small>
                                         </h3>
                                     </h2>
-                                    <p>{(event.description).slice(0,75)}</p>
                                     <Link className="btn btn-default btn-lg" to={"/details/" + event._id}>ReadMore</Link>
                                 </div>)}
                         </div>
