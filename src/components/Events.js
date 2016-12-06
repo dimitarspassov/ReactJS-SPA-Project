@@ -48,7 +48,7 @@ class Events extends React.Component {
         return eventsToRender.map(event =>
             <div key={event._id} id={event._id} className="col-md-4 portfolio-item">
                 <Link to={"/details/" + event._id}>
-                    <img className="img-responsive" src={event.image} alt=""/>
+                    <img className="img-responsive img-thumbnail" src={event.image} alt=""/>
                 </Link>
                 <h3>{event.title}
                     <br/>
@@ -77,8 +77,9 @@ class Events extends React.Component {
                         :
                         console.log()
                     }
-
-                    <Pagination className="center-block"
+                    </div>
+                    <div className="text-center">
+                    <Pagination
                         activePage={this.state.activePage}
                         itemsCountPerPage={3}
                         totalItemsCount={this.state.events.length}
@@ -86,6 +87,7 @@ class Events extends React.Component {
                         onChange={this.handlePageChange}
                     />
                     </div>
+
                 </div>
             </div>
         )

@@ -3,7 +3,7 @@ import $ from 'jquery';
 import {Link} from 'react-router';
 import Modal from 'react-modal';
 import {loadSingleEvent, attend, leave, isAttending, deleteCurrentEvent} from '../models/events';
-import { alert } from '../models/alerts'
+import {alert} from '../models/alerts'
 
 class SingleEventPage extends React.Component {
     constructor(props) {
@@ -26,7 +26,7 @@ class SingleEventPage extends React.Component {
         loadSingleEvent(this.onLoadSuccess, this.state.eventId);
 
         let btn = $("#attendBtn");
-    
+
         if (isAttending(this.state.eventId)) {
             btn.removeClass("btn btn-outline-success btn-lg");
             btn.addClass("btn btn-success btn-lg");
@@ -58,11 +58,11 @@ class SingleEventPage extends React.Component {
         this.setState({modalIsOpen: true});
     }
 
-    executeDelete(id){
-      deleteCurrentEvent(id, this.onSubmitResponse);
+    executeDelete(id) {
+        deleteCurrentEvent(id, this.onSubmitResponse);
     }
 
-    closeModal () {
+    closeModal() {
         this.setState({modalIsOpen: false});
     }
 
@@ -85,14 +85,15 @@ class SingleEventPage extends React.Component {
                     <div>
                         <button className="btn btn-default btn-lg" onClick={this.openModal.bind(this)}>Delete</button>
 
-                    <Modal className="modal-dialog"
-                        isOpen={this.state.modalIsOpen}
-                        onRequestClose={this.closeModal}
-                        contentLabel="Modal"
-                    >
+                        <Modal className="modal-dialog"
+                               isOpen={this.state.modalIsOpen}
+                               onRequestClose={this.closeModal}
+                               contentLabel="Modal"
+                        >
                             <div className="modal-content">
                                 <div className="modal-header">
-                                    <button type="button" onClick={this.closeModal.bind(this)} className="close" >&times;</button>
+                                    <button type="button" onClick={this.closeModal.bind(this)}
+                                            className="close">&times;</button>
                                     <h4 className="modal-title">Confirm delete</h4>
                                 </div>
                                 <div className="modal-body">
@@ -100,12 +101,15 @@ class SingleEventPage extends React.Component {
                                     <p>{this.state.eventData.title}</p>
                                 </div>
                                 <div className="modal-footer">
-                                    <button type="button" className="btn btn-default" onClick={this.closeModal.bind(this)}>Back</button>
+                                    <button type="button" className="btn btn-default"
+                                            onClick={this.closeModal.bind(this)}>Back
+                                    </button>
                                     <button type="button" className="btn btn-primary"
-                                            onClick={()=>this.executeDelete(this.state.eventId)}>Yes, Delete</button>
+                                            onClick={() => this.executeDelete(this.state.eventId)}>Yes, Delete
+                                    </button>
                                 </div>
                             </div>
-                    </Modal>
+                        </Modal>
                     </div>
                 </div>
 
@@ -126,6 +130,9 @@ class SingleEventPage extends React.Component {
                             <h2 className="intro-text text-center">
                                 <strong>{this.state.eventData.title}</strong>
                             </h2>
+                            <h2 className="intro-text text-center">
+                                <small>Publisher: {this.state.eventData.author}</small>
+                            </h2>
                             <hr></hr>
                             <div className="form-group col-lg-12">
                                 <button id="attendBtn" type="button" className="btn btn-outline-success btn-lg"
@@ -134,9 +141,10 @@ class SingleEventPage extends React.Component {
                             </div>
                         </div>
                         <div className="col-lg-12 text-center">
-                            <img className="img-responsive img-border img-full" src={this.state.eventData.image} alt=""></img>
+                            <img className="img-responsive img-border img-full" src={this.state.eventData.image}
+                                 alt=""></img>
                             <h2>
-                                <small>{this.state.eventData.date}</small>
+                                <small>{this.state.eventData.date}, {this.state.eventData.location}</small>
                             </h2>
                             <p>{this.state.eventData.description}</p>
                             {this.editAvailable()}
