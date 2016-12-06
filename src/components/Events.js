@@ -1,6 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router';
 import {loadEvents} from '../models/events';
+import Pagination from 'react-js-pagination'
 
 Object.defineProperty(Array.prototype, 'chunk_inefficient', {
     value: function (chunkSize) {
@@ -18,16 +19,45 @@ class Events extends React.Component {
         super();
         this.state = {
             events: [],
+            activePage: 1,
+            eventRows: []
         };
         this.onLoadSuccess = this.onLoadSuccess.bind(this);
+        this.handlePageChange = this.handlePageChange.bind(this);
+    }
+
+    componentDidMount() {
+        loadEvents(this.onLoadSuccess);
     }
 
     onLoadSuccess(response) {
-        this.setState({events: response})
+        this.setState({
+            events: response,
+            eventRows: response.chunk_inefficient(3),
+        })
     }
 
-    componentWillMount() {
-        loadEvents(this.onLoadSuccess);
+    handlePageChange(pageNumber) {
+
+        this.setState(
+            {activePage: pageNumber,});
+    }
+
+    renderEvents(eventsToRender){
+
+        return eventsToRender.map(event =>
+            <div key={event._id} id={event._id} className="col-md-4 portfolio-item">
+                <Link to={"/details/" + event._id}>
+                    <img className="img-responsive" src={event.image} alt=""/>
+                </Link>
+                <h3>{event.title}
+                    <br/>
+                    <small>{event.date}</small>
+                </h3>
+                <p>{(event.description).slice(0, 75)}</p>
+                <Link className="btn btn-default btn-lg"
+                      to={"/details/" + event._id}>ReadMore</Link>
+            </div>)
     }
 
     render() {
@@ -39,22 +69,23 @@ class Events extends React.Component {
                         <strong>Events</strong>
                     </h2>
                     <hr/>
-                    {(this.state.events.chunk_inefficient(3)).map((row, i) =>
-                        <div className="row" key={i}>
-                            {row.map(event =>
-                                <div key={event._id} id={event._id} className="col-md-4 portfolio-item">
-                                    <Link to={"/details/" + event._id}>
-                                        <img className="img-responsive" src={event.image} alt=""/>
-                                    </Link>
-                                        <h3>{event.title}
-                                            <br/>
-                                            <small>{event.date}</small>
-                                        </h3>
-                                    <p>{(event.description).slice(0,75)}</p>
-                                    <Link className="btn btn-default btn-lg"  to={"/details/" + event._id}>ReadMore</Link>
-                                </div>)}
-                        </div>
-                    )}
+                    <div className="row">
+                    {this.state.eventRows[Number(this.state.activePage)-1]!==undefined ?
+
+                            this.renderEvents(this.state.eventRows[Number(this.state.activePage)-1])
+
+                        :
+                        console.log()
+                    }
+
+                    <Pagination className="center-block"
+                        activePage={this.state.activePage}
+                        itemsCountPerPage={3}
+                        totalItemsCount={this.state.events.length}
+                        pageRangeDisplayed={5}
+                        onChange={this.handlePageChange}
+                    />
+                    </div>
                 </div>
             </div>
         )

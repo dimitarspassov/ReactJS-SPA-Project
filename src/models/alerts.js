@@ -10,8 +10,8 @@ function alert(type, text) {
                 close: {height: 'toggle'}, 
                 easing: 'swing',
                 speed: 500,
-                timeout:2000
-            }});
+            },
+        timeout:2000});
     return alert
 }
 
