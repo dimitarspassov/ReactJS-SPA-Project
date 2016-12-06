@@ -16,7 +16,7 @@ class Login extends Component {
 
     onSubmitResponse(response) {
         if (response === true) {
-            alert('success', 'You logged in successful.')
+            alert('success', 'You logged in successfully.')
             this.context.router.push('/');
         } else {
           alert('error', 'An error occured. Please try again.')
