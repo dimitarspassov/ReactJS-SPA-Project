@@ -16,7 +16,7 @@ class HomePage extends React.Component {
 
     onLoadSuccess(response) {
         this.setState({events: response.reverse().filter(e => new Date(e.date) > Date.now())
-            .sort((a, b) => new Date(b._kmd.ect) - new Date(a._kmd.ect)).slice(0,5)});
+            .sort((a, b) => new Date(a.date) - new Date(b.date)).slice(0,5)});
     }
 
     componentWillMount() {
