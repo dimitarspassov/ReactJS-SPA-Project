@@ -41,6 +41,7 @@ class Login extends Component {
                                   type="text"
                                   name="username"
                                   ref={(input) => {this.username = input}}
+                                  required="true"
                                   disabled={this.props.submitDisabled}/>
                             </div>
                         </div>
@@ -51,6 +52,7 @@ class Login extends Component {
                                 <input className="form-control"
                                   type="password"
                                   name="password"
+                                  required='true'
                                   ref={(input) => {this.password = input}}
                                   disabled={this.props.submitDisabled}/>
                             </div>

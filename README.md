@@ -22,4 +22,5 @@
 
 <div class="highlight highlight-source-shell"><pre>git clone https://github.com/inaabadjieva/ReactJS-SPA-Project.git
 
-
+npm install
+npm start</pre></div>
